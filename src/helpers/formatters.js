@@ -7,5 +7,5 @@ export const formatDate = date => {
 }
 
 export const formatEUR = (sum) => {
-    return `${sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} €`
+  return `${sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} €`
 }

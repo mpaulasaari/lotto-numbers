@@ -1,7 +1,7 @@
 const DEFAULT_NUMBERS_OPTIONS = { count: false, sort: { dir: false, key: 'cnt' } }
-const DEFAULT_PRIZES_OPTIONS = { count: false, sort: { dir: false, prize: 0 } }
-const PRIZE_TIERS = ['jackpot', 'prize2', 'prize3', 'prize4']
+const DEFAULT_PRIZES_OPTIONS = { count: false, sort: { dir: false, key: '7 oikein' } }
 
+/* Get MAX and MIN lottery numbers */
 export const getNumbers = (items = [], options = DEFAULT_NUMBERS_OPTIONS) => {
   if (!items.length) return null;
 
@@ -10,7 +10,7 @@ export const getNumbers = (items = [], options = DEFAULT_NUMBERS_OPTIONS) => {
 
   let numbers = [];
   items.forEach(item => {
-    item.numbers.forEach(num => {
+    item.primary.forEach(num => {
       const itemIndex = numbers.findIndex(item => item.num === num)
       if (itemIndex === -1) {
         numbers.push({ num: num, cnt: 1 })
@@ -31,20 +31,38 @@ export const getNumbers = (items = [], options = DEFAULT_NUMBERS_OPTIONS) => {
   return numbers.sort(onSort).slice(...onSlice);
 }
 
-
+/* Get MAX and MIN prizes won */
 export const getPrizes = (items = [], options = DEFAULT_PRIZES_OPTIONS) => {
   if (!items.length) return null;
 
   const { count, sort } = options
-  const { prize } = sort
+
+  const getMax = (arr) => getMaxInArray(arr.prizes, 'share')
 
   const onSort = sort.dir === 'desc'
-    ? (a, b) => b['wins'][prize][PRIZE_TIERS[prize]] - a['wins'][prize][PRIZE_TIERS[prize]]
+    ? (a, b) =>  getMax(b) - getMax(a)
     : sort.dir === 'asc'
-    ? (a, b) => a['wins'][prize][PRIZE_TIERS[prize]] - b['wins'][prize][PRIZE_TIERS[prize]]
+    ? (a, b) => getMax(a) - getMax(b)
     : false
 
   const onSlice = count ? [0, count] : false
 
-  return items.filter(i => i.wins[prize][PRIZE_TIERS[prize]]).sort(onSort).slice(...onSlice);
+  return items
+    .filter(item => getMaxInArray(item.prizes.filter(i => i.name === sort.key), 'share') !== 0)
+    .sort(onSort)
+    .slice(...onSlice);
+}
+
+/* Get MAX key value of an object in an array */
+export const getMaxInArray = (arr, key) => {
+  if (!arr || !key) {
+    console.log('arr and key are required')
+  }
+
+  return (
+    Math.max.apply(
+      Math,
+      arr.map(a => a[key])
+    )
+  )
 }

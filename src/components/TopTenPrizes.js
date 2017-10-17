@@ -1,35 +1,43 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { getPrizes } from '../helpers/getters'
+import { getMaxInArray, getPrizes } from '../helpers/getters'
 import { formatDate, formatEUR } from '../helpers/formatters'
 
-const TopTenPrizes = ({ items, sortDir, title }) => {
-  const options = { count: 10, sort: { dir: sortDir, prize: 0 } }
+const TopTenPrizes = ({ body, items, sortDir, title }) => {
+  const options = { count: 10, sort: { dir: sortDir } }
   const prizes = getPrizes(items, options)
-  console.log(prizes)
+
   return (
     <div>
       <h2>{title}</h2>
+      {body
+        ? <p>{body}</p>
+        : null
+      }
       <ul>
-        {prizes.map((item, i) => (
-          <li key={`top-ten-item-${i}`}>
-            {formatEUR(item.wins[0].jackpot)}
-            {` : `}
-            {formatDate(new Date(item.date))}
-          </li>
-        ))}
+        {prizes.map((item, i) => {
+          const shares = item.prizes.filter(i => i.name === '7 oikein')
+          const share = getMaxInArray(shares, 'share')
+          return (
+            <li key={`top-ten-item-${i}`}>
+              {formatEUR(share)} : {formatDate(new Date(item.date))}
+            </li>
+          )}
+        )}
       </ul>
     </div>
   )
 }
 
 TopTenPrizes.PropTypes = {
+  body: PropTypes.string,
   items: PropTypes.array.isRequired,
   sortDir: PropTypes.string,
   title: PropTypes.string.isRequired
 }
 
 TopTenPrizes.defaultProps = {
+  body: '',
   sortDir: 'desc'
 }
 
