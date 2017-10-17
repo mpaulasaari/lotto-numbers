@@ -4,7 +4,7 @@ import { getMaxInArray, getPrizes } from '../helpers/getters'
 import { formatDate, formatEUR } from '../helpers/formatters'
 
 const TopTenPrizes = ({ body, items, sortDir, title }) => {
-  const options = { count: 10, sort: { dir: sortDir } }
+  const options = { count: 10, sortDir: sortDir, sortKey: '7 oikein' }
   const prizes = getPrizes(items, options)
 
   return (
