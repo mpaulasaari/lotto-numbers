@@ -1,5 +1,4 @@
 # Lotto Numbers
-### Mika Paulasaari
 
 1. Clone the repo
 2. Install [Node](https://nodejs.org/)
