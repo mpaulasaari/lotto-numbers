@@ -4,7 +4,7 @@ import { getMaxInArray, getPrizes } from '../helpers/getters'
 import { formatDate, formatEUR } from '../helpers/formatters'
 
 const TopTenPrizes = ({ body, items, sortDir, title }) => {
-  const options = { count: 10, sort: { dir: sortDir } }
+  const options = { count: 10, sortDir: sortDir, sortKey: '7 oikein' }
   const prizes = getPrizes(items, options)
 
   return (
@@ -18,9 +18,10 @@ const TopTenPrizes = ({ body, items, sortDir, title }) => {
         {prizes.map((item, i) => {
           const shares = item.prizes.filter(i => i.name === '7 oikein')
           const share = getMaxInArray(shares, 'share')
+          const date = new Date(item.date)
           return (
             <li key={`top-ten-item-${i}`}>
-              {formatEUR(share)} : {formatDate(new Date(item.date))}
+              {formatEUR(share)} : {formatDate(date)}
             </li>
           )}
         )}

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { getNumbers } from '../helpers/getters'
 
 const TopTenNumbers = ({ body, items, sortDir, title }) => {
-  const options = { count: 10, sort: { dir: sortDir, key: 'cnt' } }
+  const options = { count: 10, sortDir: sortDir, sortKey: 'cnt' }
   const numbers = getNumbers(items, options)
   return (
     <div>

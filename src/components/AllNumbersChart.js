@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { getNumbers } from '../helpers/getters'
 
 const AllNumbersChart = ({ items, title }) => {
-  const options = { sort: { dir: 'asc', key: 'num' } }
+  const options = { sortDir: 'asc', sortKey: 'num' }
   const numbers = getNumbers(items, options)
   return (
     <div>

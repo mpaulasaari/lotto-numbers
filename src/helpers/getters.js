@@ -1,12 +1,11 @@
-const DEFAULT_NUMBERS_OPTIONS = { count: false, sort: { dir: false, key: 'cnt' } }
-const DEFAULT_PRIZES_OPTIONS = { count: false, sort: { dir: false, key: '7 oikein' } }
+const DEFAULT_NUMBERS_OPTIONS = { count: false, sortDir: false, sortKey: 'cnt' }
+const DEFAULT_PRIZES_OPTIONS = { count: false, groupBy: '', sortDir: false, sortKey: '7 oikein' }
 
 /* Get MAX and MIN lottery numbers */
 export const getNumbers = (items = [], options = DEFAULT_NUMBERS_OPTIONS) => {
   if (!items.length) return null;
 
-  const { count, sort } = options
-  const { key } = sort
+  const { count, sortDir, sortKey } = options
 
   let numbers = [];
   items.forEach(item => {
@@ -20,11 +19,7 @@ export const getNumbers = (items = [], options = DEFAULT_NUMBERS_OPTIONS) => {
     })
   })
 
-  const onSort = sort.dir === 'desc'
-    ? (a, b) => b[key] - a[key]
-    : sort.dir === 'asc'
-    ? (a, b) => a[key] - b[key]
-    : false
+  const onSort = sortByKey(sortDir, sortKey)
 
   const onSlice = count ? [0, count] : false
 
@@ -35,20 +30,20 @@ export const getNumbers = (items = [], options = DEFAULT_NUMBERS_OPTIONS) => {
 export const getPrizes = (items = [], options = DEFAULT_PRIZES_OPTIONS) => {
   if (!items.length) return null;
 
-  const { count, sort } = options
+  const { count, sortDir, sortKey } = options
 
   const getMax = (arr) => getMaxInArray(arr.prizes, 'share')
 
-  const onSort = sort.dir === 'desc'
+  const onSort = sortDir === 'desc'
     ? (a, b) =>  getMax(b) - getMax(a)
-    : sort.dir === 'asc'
+    : sortDir === 'asc'
     ? (a, b) => getMax(a) - getMax(b)
     : false
 
   const onSlice = count ? [0, count] : false
 
   return items
-    .filter(item => getMaxInArray(item.prizes.filter(i => i.name === sort.key), 'share') !== 0)
+    .filter(item => getMaxInArray(item.prizes.filter(i => i.name === sortKey), 'share') !== 0)
     .sort(onSort)
     .slice(...onSlice);
 }
@@ -65,4 +60,12 @@ export const getMaxInArray = (arr, key) => {
       arr.map(a => a[key])
     )
   )
+}
+
+export const sortByKey = (sortDir, sortKey) => {
+  return sortDir === 'desc'
+    ? (a, b) => b[sortKey] - a[sortKey]
+    : sortDir === 'asc'
+    ? (a, b) => a[sortKey] - b[sortKey]
+    : false
 }
