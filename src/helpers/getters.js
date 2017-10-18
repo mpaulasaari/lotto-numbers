@@ -1,5 +1,5 @@
 const DEFAULT_NUMBERS_OPTIONS = { count: false, sortDir: false, sortKey: 'cnt' }
-const DEFAULT_PRIZES_OPTIONS = { count: false, sortDir: false, sortKey: '7 oikein' }
+const DEFAULT_PRIZES_OPTIONS = { count: false, groupBy: '', sortDir: false, sortKey: '7 oikein' }
 
 /* Get MAX and MIN lottery numbers */
 export const getNumbers = (items = [], options = DEFAULT_NUMBERS_OPTIONS) => {
@@ -19,11 +19,7 @@ export const getNumbers = (items = [], options = DEFAULT_NUMBERS_OPTIONS) => {
     })
   })
 
-  const onSort = sortDir === 'desc'
-    ? (a, b) => b[sortKey] - a[sortKey]
-    : sortDir === 'asc'
-    ? (a, b) => a[sortKey] - b[sortKey]
-    : false
+  const onSort = sortByKey(sortDir, sortKey)
 
   const onSlice = count ? [0, count] : false
 
@@ -64,4 +60,12 @@ export const getMaxInArray = (arr, key) => {
       arr.map(a => a[key])
     )
   )
+}
+
+export const sortByKey = (sortDir, sortKey) => {
+  return sortDir === 'desc'
+    ? (a, b) => b[sortKey] - a[sortKey]
+    : sortDir === 'asc'
+    ? (a, b) => a[sortKey] - b[sortKey]
+    : false
 }
