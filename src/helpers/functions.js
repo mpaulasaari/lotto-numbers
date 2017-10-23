@@ -1,5 +1,14 @@
-const DEFAULT_NUMBERS_OPTIONS = { count: false, sortDir: false, sortKey: 'cnt' }
-const DEFAULT_PRIZES_OPTIONS = { count: false, groupBy: '', sortDir: false, sortKey: '7 oikein' }
+const DEFAULT_NUMBERS_OPTIONS = {
+  count: false,
+  sortDir: false,
+  sortKey: 'cnt'
+}
+const DEFAULT_PRIZES_OPTIONS = {
+  count: false,
+  groupBy: '',
+  sortDir: false,
+  sortKey: '7 oikein'
+}
 
 /* Get MAX and MIN lottery numbers */
 export const getNumbers = (items = [], options = DEFAULT_NUMBERS_OPTIONS) => {
@@ -68,4 +77,28 @@ export const sortByKey = (sortDir, sortKey) => {
     : sortDir === 'asc'
     ? (a, b) => a[sortKey] - b[sortKey]
     : false
+}
+
+export const sortStringsByKey = (sortDir, sortKey) => {
+  return sortDir === 'desc'
+    ? (a, b) => b[sortKey] > a[sortKey]
+    : sortDir === 'asc'
+    ? (a, b) => a[sortKey] < b[sortKey]
+    : false
+}
+
+export const parsePrizes = (prizes, date) => {
+  return prizes.map(prize => {
+    const primary = prize.name.charAt(0)
+    const secondary = prize.name.charAt(1) === '+' ? prize.name.charAt(2) : 0
+    return {
+      name: prize.name,
+      date: date,
+      share: prize.share,
+      values: {
+        primary: parseInt(primary, 10),
+        secondary: parseInt(secondary, 10)
+      }
+    }
+  })
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { getNumbers } from '../helpers/getters'
+import { getNumbers } from '../helpers/functions'
 
 const AllNumbersChart = ({ items, title }) => {
   const options = { sortDir: 'asc', sortKey: 'num' }

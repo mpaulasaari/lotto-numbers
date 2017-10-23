@@ -1,4 +1,5 @@
-export const formatDate = date => {
+export const formatDate = timestamp => {
+  const date = new Date(timestamp)
   const day = date.getDate();
   const month = date.getMonth() + 1;
   const year = date.getFullYear();
@@ -8,4 +9,8 @@ export const formatDate = date => {
 
 export const formatEUR = (sum) => {
   return `${sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} €`
+}
+
+export const formatMatch = (match) => {
+  return match.replace('oikein', 'match')
 }

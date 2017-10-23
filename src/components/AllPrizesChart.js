@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { getMaxInArray, getPrizes, sortByKey } from '../helpers/getters'
+import { getMaxInArray, getPrizes, sortByKey } from '../helpers/functions'
 import { formatEUR } from '../helpers/formatters'
 
 const AllPrizesChart = ({ items, title }) => {

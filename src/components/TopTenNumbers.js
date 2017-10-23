@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { getNumbers } from '../helpers/getters'
+import { getNumbers } from '../helpers/functions'
 
 const TopTenNumbers = ({ body, items, sortDir, title }) => {
   const options = { count: 10, sortDir: sortDir, sortKey: 'cnt' }
