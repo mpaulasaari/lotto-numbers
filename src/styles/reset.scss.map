@@ -1,8 +1,8 @@
 {
 	"version": 3,
-	"file": "main.css",
+	"file": "reset.scss",
 	"sources": [
-		"../../src/styles/main.scss"
+		"colors.scss"
 	],
 	"names": [],
 	"mappings": ""

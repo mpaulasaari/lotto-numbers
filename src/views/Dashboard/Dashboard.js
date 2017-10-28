@@ -6,23 +6,11 @@ import NumberChecker from 'components/NumberChecker'
 import SecondaryNumbers from 'components/SecondaryNumbers'
 import TopTenNumbers from 'components/TopTenNumbers'
 import TopTenPrizes from 'components/TopTenPrizes'
+import './Dashboard.scss'
 
 const Dashboard = ({ items }) => {
-  // let max = 0
-  // let startDate = 0
-  // let endDate = 0
-  // items.forEach(item => {
-  //   const prizes = item.prizes.length
-  //   if (prizes > max) {
-  //     max = prizes
-  //     endDate = item.date
-  //   } else if (prizes === max) {
-  //     startDate = item.date
-  //   }
-  // })
-  // console.log(max, startDate, endDate)
   return (
-    <div>
+    <section className='Dashboard'>
       <AllNumbersChart items={items} title='Numbers All Time' />
       <NumberChecker items={items} title='Number Checker' />
       <TopTenNumbers items={items} title='Most Frequent Numbers' />
@@ -31,7 +19,7 @@ const Dashboard = ({ items }) => {
       <TopTenPrizes items={items} title='Biggest Jackpots' />
       <TopTenPrizes items={items} sortDir='asc' title='Smallest Jackpots' />
       <SecondaryNumbers items={items} title='Amount of Secondary Numbers' />
-    </div>
+    </section>
   )
 }
 

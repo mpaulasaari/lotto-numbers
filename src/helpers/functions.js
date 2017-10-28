@@ -13,9 +13,7 @@ const DEFAULT_PRIZES_OPTIONS = {
 /* Get MAX and MIN lottery numbers */
 export const getNumbers = (items = [], options = DEFAULT_NUMBERS_OPTIONS) => {
   if (!items.length) return null;
-
   const { count, sortDir, sortKey } = options
-
   let numbers = [];
   items.forEach(item => {
     item.primary.forEach(num => {
@@ -27,32 +25,27 @@ export const getNumbers = (items = [], options = DEFAULT_NUMBERS_OPTIONS) => {
       }
     })
   })
-
   const onSort = sortByKey(sortDir, sortKey)
-
   const onSlice = count ? [0, count] : false
-
   return numbers.sort(onSort).slice(...onSlice);
 }
 
 /* Get MAX and MIN prizes won */
 export const getPrizes = (items = [], options = DEFAULT_PRIZES_OPTIONS) => {
   if (!items.length) return null;
-
   const { count, sortDir, sortKey } = options
-
   const getMax = (arr) => getMaxInArray(arr.prizes, 'share')
-
   const onSort = sortDir === 'desc'
     ? (a, b) =>  getMax(b) - getMax(a)
     : sortDir === 'asc'
     ? (a, b) => getMax(a) - getMax(b)
     : false
-
   const onSlice = count ? [0, count] : false
-
   return items
-    .filter(item => getMaxInArray(item.prizes.filter(i => i.name === sortKey), 'share') !== 0)
+    .filter(item => getMaxInArray(
+      item.prizes.filter(i => i.name === sortKey),
+      'share'
+    ) !== 0)
     .sort(onSort)
     .slice(...onSlice);
 }
@@ -62,7 +55,6 @@ export const getMaxInArray = (arr, key) => {
   if (!arr || !key) {
     console.log('arr and key are required')
   }
-
   return (
     Math.max.apply(
       Math,
@@ -72,18 +64,16 @@ export const getMaxInArray = (arr, key) => {
 }
 
 export const sortByKey = (sortDir, sortKey) => {
+  const compareByType = (x, y) => {
+    if (typeof x === 'string') {
+      return x > y
+    }
+    return x - y
+  }
   return sortDir === 'desc'
-    ? (a, b) => b[sortKey] - a[sortKey]
+    ? (a, b) => compareByType(b[sortKey], a[sortKey])
     : sortDir === 'asc'
-    ? (a, b) => a[sortKey] - b[sortKey]
-    : false
-}
-
-export const sortStringsByKey = (sortDir, sortKey) => {
-  return sortDir === 'desc'
-    ? (a, b) => b[sortKey] > a[sortKey]
-    : sortDir === 'asc'
-    ? (a, b) => a[sortKey] < b[sortKey]
+    ? (a, b) => compareByType(a[sortKey], b[sortKey])
     : false
 }
 
@@ -108,7 +98,10 @@ export const getSortedPrizes = (items, options) => {
   const prizesByYear = []
   prizes.forEach((item) => {
     const year = new Date(item.date).getFullYear()
-    const amount = getMaxInArray(item.prizes.filter(i => i.name === options.sortKey), 'share')
+    const amount = getMaxInArray(
+      item.prizes.filter(i => i.name === options.sortKey),
+      'share'
+    )
     if (prizesByYear.some(arrItem => arrItem.year === year)) {
       prizesByYear.find(arrItem => arrItem.year === year).yearTotal += amount
     } else {
