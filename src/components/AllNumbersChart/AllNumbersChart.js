@@ -32,7 +32,7 @@ class AllNumbersChart extends Component {
             <YAxis
               axisLine={false}
               dataKey='count'
-              padding={{ top: 12, bottom: 12 }}
+              padding={{ top: 12, bottom: 5 }}
               tickSize={0}
               width={30}
             />
@@ -45,7 +45,7 @@ class AllNumbersChart extends Component {
             <Bar
               dataKey='count'
               dot
-              shape={<RoundedBar/>}
+              shape={<RoundedBar />}
             />
           </BarChart>
         </ResponsiveContainer>

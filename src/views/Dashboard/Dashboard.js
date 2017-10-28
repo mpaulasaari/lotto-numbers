@@ -4,6 +4,7 @@ import AllNumbersChart from 'components/AllNumbersChart'
 import AllPrizesChart from 'components/AllPrizesChart'
 import NumberChecker from 'components/NumberChecker'
 import SecondaryNumbers from 'components/SecondaryNumbers'
+import Statistics from 'components/Statistics'
 import TopTenNumbers from 'components/TopTenNumbers'
 import TopTenPrizes from 'components/TopTenPrizes'
 import './Dashboard.scss'
@@ -11,6 +12,7 @@ import './Dashboard.scss'
 const Dashboard = ({ items }) => {
   return (
     <section className='Dashboard'>
+      <Statistics items={items} title='Statistics' />
       <AllNumbersChart items={items} title='Numbers All Time' />
       <NumberChecker items={items} title='Number Checker' />
       <TopTenNumbers items={items} title='Most Frequent Numbers' />

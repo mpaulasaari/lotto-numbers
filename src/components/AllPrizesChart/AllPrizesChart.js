@@ -45,7 +45,7 @@ class AllPrizesChart extends Component {
             <YAxis
               axisLine={false}
               dataKey='yearTotal'
-              padding={{ top: 20, bottom: 30 }}
+              padding={{ top: 20, bottom: 10 }}
               tickFormatter={d => d / 1000000}
               tickSize={0}
               unit=' M€'

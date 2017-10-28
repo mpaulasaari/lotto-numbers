@@ -3,7 +3,17 @@ import PropTypes from 'prop-types'
 
 const RoundedBar = (props) => {
   const { x, y, width, height } = props
-  return <rect x={x} y={y} width={width} height={height} rx={width / 2} ry={width / 2} />
+  return (
+    <rect
+      className='RoundedBar'
+      height={height}
+      width={width}
+      x={x}
+      y={y}
+      rx={width / 2}
+      ry={width / 2}
+    />
+  )
 };
 
 RoundedBar.propTypes = {
