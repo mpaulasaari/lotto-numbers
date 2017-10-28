@@ -83,7 +83,7 @@ class NumberChecker extends Component {
     const { title } = this.props
     const { biggestWin, errors, inputNumbers, prizesWon } = this.state
     return (
-      <section className='NumberChecker'>
+      <section className='NumberChecker section'>
         <h2>{title}</h2>
         <NumberInput onChange={(e) => this.onInputChange(0, e)} value={inputNumbers[0] || ''} />
         <NumberInput onChange={(e) => this.onInputChange(1, e)} value={inputNumbers[1] || ''} />

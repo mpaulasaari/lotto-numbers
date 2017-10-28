@@ -17,7 +17,7 @@ class AllPrizesChart extends Component {
     const { options } = this.state
     const prizesSorted = getSortedPrizes(items, options)
     return (
-      <section className='AllPrizesChart'>
+      <section className='AllPrizesChart section'>
         <h2>{title}</h2>
         <ResponsiveContainer width='100%' height={300}>
           <AreaChart data={prizesSorted}>

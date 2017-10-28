@@ -27,7 +27,6 @@ rules:
   no-duplicate-properties: 1
   no-ids: 2
   no-important: 2
-  no-misspelled-properties: 2
   hex-notation:
     - 2
     - style: lowercase

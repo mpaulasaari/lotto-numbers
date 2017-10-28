@@ -1,7 +1,26 @@
 @import '~styles/colors.scss';
 @import '~styles/variables.scss';
 
+$titleColor: $white;
+$suffixColor: $lightBlue;
+
 .Header {
+  display: flex;
   height: $headerHeight;
+  font-size: 20px;
+  text-align: center;
+  text-transform: uppercase;
   background: $black;
+  align-items: center;
+  justify-content: center;
+
+  &-title {
+    margin: 0 10px;
+    color: $titleColor;
+  }
+
+  &-suffix {
+    font-size: 12px;
+    color: $suffixColor;
+  }
 }

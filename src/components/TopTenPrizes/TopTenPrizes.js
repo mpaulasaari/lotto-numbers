@@ -8,7 +8,7 @@ const TopTenPrizes = ({ body, items, sortDir, title }) => {
   const prizes = getPrizes(items, options)
 
   return (
-    <section className='TopTenPrizes'>
+    <section className='TopTenPrizes section'>
       <h2>{title}</h2>
       {body
         ? <p>{body}</p>

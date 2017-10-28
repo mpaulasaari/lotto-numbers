@@ -92,6 +92,7 @@ module.exports = {
     alias: {
       components: path.resolve(__dirname, '../src/components'),
       helpers: path.resolve(__dirname, '../src/helpers'),
+      assets: path.resolve(__dirname, '../src/assets'),
       styles: path.resolve(__dirname, '../src/styles'),
       views: path.resolve(__dirname, '../src/views'),
       // Support React Native Web
@@ -212,6 +213,10 @@ module.exports = {
           },
           {
             test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader',
+          },
+          {
+            test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
+            loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]',
           },
           // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.

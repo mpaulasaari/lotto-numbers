@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 @import './colors.scss';
 
+$bodyColor: $lightBlue;
+
 body {
   font-family: Lato, Arial, Helvetica;
-  color: $lightBlue;
+  color: $bodyColor;
 }
 
 h1 {
