@@ -13,25 +13,21 @@ class NumberChecker extends Component {
     prizesWon: []
   }
   onCheckNumbers = () => {
-    const { items } = this.props
     let prizesWon = []
     let biggestWin = { name: '', date: 0, share: 0 }
     const numberArr = this.numberInput.value.split(',').map(num => parseInt(num, 10))
-    items.forEach(item => {
-      const itemPrimaries = item.primary
-      const itemSecondaries = item.secondary
-      const matchingPrimaries = itemPrimaries.filter(itemNumber => numberArr.some(number => number === itemNumber))
-      const matchingSecondaries = itemSecondaries.filter(itemNumber => numberArr.some(number => number === itemNumber))
+    this.props.items.forEach(item => {
+      const matchingPrimaries = item.primary.filter(itemNumber => numberArr.some(number => number === itemNumber))
+      const matchingSecondaries = item.secondary.filter(itemNumber => numberArr.some(number => number === itemNumber))
       const prizes = parsePrizes(item.prizes, item.date)
       prizes.forEach(prize => {
         if (prize.values.primary === matchingPrimaries.length && prize.values.secondary === matchingSecondaries.length) {
           if (prizesWon.find(prizeWon => prizeWon.name === prize.name)) {
-            const prizeWonIndex = prizesWon.findIndex((prizeWon => prizeWon.name === prize.name))
-            prizesWon[prizeWonIndex].count += 1
+            prizesWon[prizesWon.findIndex((prizeWon => prizeWon.name === prize.name))].count += 1
           } else {
             prizesWon.push({ name: prize.name, count: 1 })
           }
-          if ((prize.share >= biggestWin.share) || (prize.share === biggestWin.share && prize.date > biggestWin.date)) {
+          if ((prize.name > biggestWin.name) || (prize.name === biggestWin.name && prize.share === biggestWin.share && prize.date > biggestWin.date)) {
             biggestWin = { name: prize.name, date: prize.date, share: prize.share }
           }
         }
@@ -48,11 +44,11 @@ class NumberChecker extends Component {
     return (
       <div>
         <h2>{title}</h2>
-        <input type='text' ref={(input) => { this.numberInput = input; }} value='1,2,3,4,5,6,7' />
+        <input type='text' ref={(input) => { this.numberInput = input; }} />
         <button onClick={this.onCheckNumbers}>Check</button>
         {biggestWin ?
           <div>
-            <h3>The biggest win with these numbers:</h3>
+            <h3>The biggest match or win with these numbers:</h3>
             <p>{formatDate(biggestWin.date)}: {formatMatch(biggestWin.name)} {formatEUR(biggestWin.share)}</p>
           </div>
         : null }

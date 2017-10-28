@@ -20,7 +20,8 @@ const AllNumbersChart = ({ items, title }) => {
 }
 
 AllNumbersChart.PropTypes = {
-  items: PropTypes.array.isRequired
+  items: PropTypes.array.isRequired,
+  title: PropTypes.string.isRequired,
 }
 
 export default AllNumbersChart

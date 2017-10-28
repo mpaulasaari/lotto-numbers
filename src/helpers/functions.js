@@ -102,3 +102,21 @@ export const parsePrizes = (prizes, date) => {
     }
   })
 }
+
+export const getSortedPrizes = (items, options) => {
+  const prizes = getPrizes(items, options)
+  const prizesByYear = []
+  prizes.forEach((item) => {
+    const year = new Date(item.date).getFullYear()
+    const amount = getMaxInArray(item.prizes.filter(i => i.name === options.sortKey), 'share')
+    if (prizesByYear.some(arrItem => arrItem.year === year)) {
+      prizesByYear.find(arrItem => arrItem.year === year).yearTotal += amount
+    } else {
+      prizesByYear.push({
+        year: year,
+        yearTotal: amount
+      })
+    }
+  })
+  return prizesByYear.sort(sortByKey('asc', 'year'))
+}
