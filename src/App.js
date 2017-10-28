@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import firebase from './firebase'
 import Dashboard from 'views/Dashboard'
+import Header from 'components/Header'
 
 class App extends Component {
   state = {
     items: []
   }
-
   componentWillMount() {
     const cachedNumbers = JSON.parse(localStorage.getItem('lottoNumbers'))
     if (cachedNumbers) {
@@ -27,7 +27,6 @@ class App extends Component {
       this.getItems()
     }
   }
-
   getItems = () => {
     const fbRef = firebase.database().ref()
     fbRef.once('value', snapshot => {
@@ -38,14 +37,14 @@ class App extends Component {
       localStorage.setItem('lottoNumbers', JSON.stringify(cachedNumbers))
     })
   }
-
   render() {
     const { items } = this.state
-
     if (!items.length) return null
-
     return (
-      <Dashboard items={items} />
+      <main className='App'>
+        <Header />
+        <Dashboard items={items} />
+      </main>
     )
   }
 }

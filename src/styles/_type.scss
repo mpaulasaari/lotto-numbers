@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import './colors.scss';
+
+body {
+  font-family: Lato, Arial, Helvetica;
+  color: $lightBlue;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+}

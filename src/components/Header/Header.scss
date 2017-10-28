@@ -1,0 +1,7 @@
+@import '~styles/colors.scss';
+@import '~styles/variables.scss';
+
+.Header {
+  height: $headerHeight;
+  background: $black;
+}

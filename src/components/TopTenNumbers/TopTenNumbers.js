@@ -6,7 +6,7 @@ const TopTenNumbers = ({ body, items, sortDir, title }) => {
   const options = { count: 10, sortDir: sortDir, sortKey: 'count' }
   const numbers = getNumbers(items, options)
   return (
-    <div>
+    <section className='TopTenNumbers'>
       <h2>{title}</h2>
       {body
         ? <p>{body}</p>
@@ -19,7 +19,7 @@ const TopTenNumbers = ({ body, items, sortDir, title }) => {
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   )
 }
 

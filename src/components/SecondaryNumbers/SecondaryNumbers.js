@@ -23,7 +23,7 @@ const SecondaryNumbers = ({ items, title }) => {
   })
 
   return (
-    <div>
+    <section className='SecondaryNumbers'>
       <h2>{title}</h2>
       <ul>
         {amounts.map((item, i) => (
@@ -32,7 +32,7 @@ const SecondaryNumbers = ({ items, title }) => {
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   )
 }
 

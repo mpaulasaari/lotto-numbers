@@ -24,7 +24,7 @@ rules:
 
   no-warn: 1
   no-debug: 1
-  no-duplicate-properties: 2
+  no-duplicate-properties: 1
   no-ids: 2
   no-important: 2
   no-misspelled-properties: 2

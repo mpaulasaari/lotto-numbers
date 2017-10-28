@@ -1,0 +1,12 @@
+@import './colors.scss';
+@import './variables.scss';
+
+body {
+  background-attachment: fixed;
+  background-color: $darkBlue;
+  background-image:
+  linear-gradient(325deg, $darkBlue 0%, rgba($darkBlue, 0) 40%),
+  linear-gradient(155deg, $darkBlue 0%, rgba($darkBlue, 0) 40%),
+  linear-gradient(245deg, $darkRed 0%, rgba($darkRed, 0) 35%),
+  linear-gradient(60deg, $darkCyan 0%, rgba($darkCyan, 0) 50%)
+}
