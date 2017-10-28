@@ -2,10 +2,8 @@
 	"version": 3,
 	"file": "main.css",
 	"sources": [
-		"../../src/styles/main.scss",
-		"../../src/styles/index.scss",
-		"../../src/styles/App.scss"
+		"../../src/styles/main.scss"
 	],
 	"names": [],
-	"mappings": "ACAA,AAAA,IAAI,AAAC,CACH,MAAM,CAAE,IAAI,CACZ,OAAO,CAAE,CAAC,CACV,WAAW,CAAE,iBAAiB,CAC/B,ACJD,AAAA,IAAI,AAAC,CACH,UAAU,CAAE,MAAM,CACnB,AAED,AAAA,SAAS,AAAC,CACR,SAAS,CAAE,iCAAiC,CAC5C,MAAM,CAAE,IAAI,CACb,AAED,AAAA,WAAW,AAAC,CACV,gBAAgB,CAAE,IAAI,CACtB,MAAM,CAAE,KAAK,CACb,OAAO,CAAE,IAAI,CACb,KAAK,CAAE,KAAK,CACb,AAED,AAAA,UAAU,AAAC,CACT,SAAS,CAAE,KAAK,CACjB,AAED,UAAU,CAAV,aAAU,CACR,AAAA,IAAI,CAAG,SAAS,CAAE,YAAY,CAC9B,AAAA,EAAE,CAAG,SAAS,CAAE,cAAc"
+	"mappings": ""
 }

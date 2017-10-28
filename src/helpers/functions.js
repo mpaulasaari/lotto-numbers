@@ -19,11 +19,11 @@ export const getNumbers = (items = [], options = DEFAULT_NUMBERS_OPTIONS) => {
   let numbers = [];
   items.forEach(item => {
     item.primary.forEach(num => {
-      const itemIndex = numbers.findIndex(item => item.num === num)
+      const itemIndex = numbers.findIndex(item => item.number === num)
       if (itemIndex === -1) {
-        numbers.push({ num: num, cnt: 1 })
+        numbers.push({ number: num, count: 1 })
       } else {
-        numbers[itemIndex] = { num: num, cnt: numbers[itemIndex].cnt + 1 }
+        numbers[itemIndex] = { number: num, count: numbers[itemIndex].count + 1 }
       }
     })
   })

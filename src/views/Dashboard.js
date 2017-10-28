@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import AllNumbersChart from '../components/AllNumbersChart'
-import AllPrizesChart from '../components/AllPrizesChart'
-import NumberChecker from '../components/NumberChecker'
-import SecondaryNumbers from '../components/SecondaryNumbers'
-import TopTenNumbers from '../components/TopTenNumbers'
-import TopTenPrizes from '../components/TopTenPrizes'
+import AllNumbersChart from 'components/AllNumbersChart'
+import AllPrizesChart from 'components/AllPrizesChart'
+import NumberChecker from 'components/NumberChecker'
+import SecondaryNumbers from 'components/SecondaryNumbers'
+import TopTenNumbers from 'components/TopTenNumbers'
+import TopTenPrizes from 'components/TopTenPrizes'
 
 const Dashboard = ({ items }) => {
   // let max = 0

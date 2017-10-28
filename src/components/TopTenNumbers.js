@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { getNumbers } from '../helpers/functions'
+import { getNumbers } from 'helpers/functions'
 
 const TopTenNumbers = ({ body, items, sortDir, title }) => {
-  const options = { count: 10, sortDir: sortDir, sortKey: 'cnt' }
+  const options = { count: 10, sortDir: sortDir, sortKey: 'count' }
   const numbers = getNumbers(items, options)
   return (
     <div>
@@ -15,7 +15,7 @@ const TopTenNumbers = ({ body, items, sortDir, title }) => {
       <ul>
         {numbers.map((item, i) => (
           <li key={`top-ten-item-${i}`}>
-            {item.num}: {item.cnt}
+            {item.number}: {item.count}
           </li>
         ))}
       </ul>

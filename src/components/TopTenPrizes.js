@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { getMaxInArray, getPrizes } from '../helpers/functions'
-import { formatDate, formatEUR } from '../helpers/formatters'
+import { getMaxInArray, getPrizes } from 'helpers/functions'
+import { formatDate, formatEUR } from 'helpers/formatters'
 
 const TopTenPrizes = ({ body, items, sortDir, title }) => {
   const options = { count: 10, sortDir: sortDir, sortKey: '7 oikein' }

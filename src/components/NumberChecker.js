@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { formatDate, formatEUR, formatMatch } from '../helpers/formatters'
-import { parsePrizes, sortStringsByKey } from '../helpers/functions'
+import { formatDate, formatEUR, formatMatch } from 'helpers/formatters'
+import { parsePrizes, sortStringsByKey } from 'helpers/functions'
 
 class NumberChecker extends Component {
   constructor(props) {

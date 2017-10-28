@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import firebase from './firebase'
-import Dashboard from './modules/Dashboard'
+import Dashboard from 'views/Dashboard'
 
 class App extends Component {
   state = {
