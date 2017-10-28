@@ -5,12 +5,16 @@ $titleColor: $white;
 $suffixColor: $lightBlue;
 
 .Header {
+  position: fixed;
+  top: 0;
+  z-index: 999;
   display: flex;
+  width: 100%;
   height: $headerHeight;
   font-size: 20px;
   text-align: center;
   text-transform: uppercase;
-  background: $black;
+  background: linear-gradient($black 0%, rgba($black, 0.8) 100%);
   align-items: center;
   justify-content: center;
 

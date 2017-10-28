@@ -1,0 +1,87 @@
+@import './colors.scss';
+@import './variables.scss';
+
+$chartFontSize: 14px;
+
+.recharts-responsive-container {
+  padding: 20px 0;
+}
+
+.recharts-cartesian-axis-tick text {
+  font-size: $chartFontSize;
+  fill: $greyBlue;
+}
+
+// Bar Chart
+.recharts-active-cell {
+  stroke: $white;
+  stroke-width: 1px;
+}
+
+.recharts-rectangle.recharts-tooltip-cursor {
+  fill: $greyBlue;
+}
+
+// Line Chart
+.recharts-line-curve {
+  stroke-width: 3px;
+
+  @media (max-width: $breakMedium) {
+    stroke-width: 2px;
+  }
+}
+
+.recharts-line-dot,
+.recharts-active-dot .recharts-dot {
+  fill-opacity: 1;
+  stroke: none;
+  r: 5;
+
+  @media (max-width: $breakMedium) {
+    r: 4;
+  }
+
+  @media (max-width: $breakSmall) {
+    r: 3;
+  }
+
+  @for $i from 1 through 42 {
+    &:nth-child(#{$i}) {
+      fill: nth($barChartColors, $i);
+    }
+  }
+}
+
+.recharts-active-dot .recharts-dot {
+  &,
+  &:nth-child(1) {
+    fill: none;
+    stroke: $white;
+  }
+}
+
+.recharts-curve.recharts-tooltip-cursor {
+  stroke: $greyBlue;
+}
+
+// Tooltip
+.recharts-default-tooltip {
+  min-width: 60px;
+  padding: 10px 15px !important;
+  font-size: $chartFontSize;
+  background-color: rgba($black, 0.8) !important;
+  border: 0 !important;
+
+  .recharts-tooltip-label {
+    color: $lightBlue;
+  }
+
+  .recharts-tooltip-item-value {
+    font-size: 16px;
+    color: $white;
+  }
+
+  .recharts-tooltip-item-name {
+    display: none;
+  }
+}
