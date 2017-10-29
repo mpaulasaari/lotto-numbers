@@ -1,9 +1,9 @@
-export const formatDate = timestamp => {
+export const formatDate = (timestamp, granularity) => {
   const date = new Date(timestamp)
   const day = date.getDate();
   const month = date.getMonth() + 1;
   const year = date.getFullYear();
-
+  if (granularity === 'year') return year
   return `${month}/${day}/${year}`
 }
 

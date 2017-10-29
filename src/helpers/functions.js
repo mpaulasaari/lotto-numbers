@@ -113,3 +113,13 @@ export const getSortedPrizes = (items, options) => {
   })
   return prizesByYear.sort(sortByKey('asc', 'year'))
 }
+
+export const getDateRange = (items) => {
+  let range = { min: 0, max: 0 }
+  items.forEach(item => {
+    const date = item.date
+    range.min = !range.min || date < range.min ? date : range.min
+    range.max = !range.max || date > range.max ? date : range.max
+  })
+  return range
+}

@@ -12,40 +12,51 @@ const Dashboard = ({ items }) => {
   return (
     <section className='Dashboard'>
       <AllNumbersChart
-        body='How many times each individual number has been picked during the
-        history. Number 40 was introduced in 2017 and numbers 38 and 39 were
+        body='How many times each individual number has been picked between 1980
+        and 2017. Number 40 was introduced in 2017 and numbers 38 and 39 were
         introduced in 1986.'
         items={items}
         title='Numbers All Time'
       />
       <NumberChecker
-        body='Check how many times your numbers have been picked.'
+        body='Check how many times your numbers have won.'
         items={items}
         title='Number Checker'
       />
-      <TopTenNumbers
-        items={items}
-        title='Most Frequent Numbers'
-      />
-      <TopTenNumbers
-        body='Number 40 was introduced in 2017. Numbers 38 and 39 were introduced in 1986.'
-        items={items}
-        sortDir='asc'
-        title='Least Frequent Numbers'
-      />
+      <div className='row'>
+        <div className='col-2'>
+          <TopTenNumbers
+            items={items}
+            title='Most Frequent Numbers'
+          />
+        </div>
+        <div className='col-2'>
+          <TopTenNumbers
+            items={items}
+            sortDir='asc'
+            title='Least Frequent Numbers'
+          />
+        </div>
+      </div>
       <AllPrizesChart
         items={items}
         title='Individually Won Jackpots Total by Year'
       />
-      <TopTenPrizes
-        items={items}
-        title='Biggest Jackpots'
-      />
-      <TopTenPrizes
-        items={items}
-        sortDir='asc'
-        title='Smallest Jackpots'
-      />
+      <div className='row'>
+        <div className='col-2'>
+          <TopTenPrizes
+            items={items}
+            title='Biggest Jackpots'
+          />
+        </div>
+        <div className='col-2'>
+          <TopTenPrizes
+            items={items}
+            sortDir='asc'
+            title='Smallest Jackpots'
+          />
+        </div>
+      </div>
       <SecondaryNumbers
         items={items}
         title='Amount of Secondary Numbers'

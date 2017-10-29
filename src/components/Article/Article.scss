@@ -1,9 +1,16 @@
 @import '~styles/colors';
+@import '~styles/variables';
+
+$articlePadding: 1.8em;
 
 .Article {
-  padding: 1.8em;
-  margin-bottom: 15px;
+  padding: $articlePadding;
+  margin-bottom: $articleMargin;
   background-color: rgba($darkerBlue, 0.8);
+
+  .row & {
+    height: calc(100% - (#{$articlePadding} * 2) - #{$articleMargin});
+  }
 
   .Article-body {
     max-width: 700px;

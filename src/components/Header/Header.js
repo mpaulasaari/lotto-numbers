@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header className='Header'>
       <Logo fill='#98bcd9' height={36} width={36} />
-      <span className='Header-title'>Lotto Numbers</span>
+      <h1 className='Header-title'>Lotto Numbers</h1>
       <span className='Header-suffix'>BETA</span>
     </header>
   )

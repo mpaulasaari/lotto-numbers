@@ -3,16 +3,23 @@
 @import '~styles/variables';
 
 .Button {
-  padding: 0.5em;
+  padding: 0.6em;
   margin: 0 5px 0 10px;
   font-family: Lato, Arial, Helvetica;
   font-size: 1em;
   color: $white;
+  text-transform: uppercase;
   cursor: pointer;
   border: 0;
   border-radius: 1em;
   outline: none;
   transition: all $transitionDuration;
+
+  @media (min-width: $breakSmall) and (max-width: $breakMedium) {
+    padding: 0.4em;
+    font-size: 0.8em;
+    border-radius: 0.8em;
+  }
 
   &-check {
     background-color: $lightGreen;
