@@ -1,22 +1,24 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 @import './colors.scss';
+@import './variables.scss';
 
 $bodyColor: $lightBlue;
 
 body {
   font-family: Lato, Arial, Helvetica;
   font-size: 16px;
-  line-height: 1.5rem;
+  line-height: 1.5em;
   color: $bodyColor;
-}
 
-h1 {
-  font-size: 3rem;
+  @media (max-width: $breakSmall) {
+    font-size: 14px;
+  }
 }
 
 h2 {
-  margin-bottom: 20px;
-  font-size: 2rem;
+  margin-bottom: 0.6em;
+  font-size: 2em;
+  line-height: 1.2em;
   color: $white;
   text-align: center;
   text-transform: uppercase;

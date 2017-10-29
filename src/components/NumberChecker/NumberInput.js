@@ -1,12 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import './NumberInput.scss'
 
-const NumberInput = ({ onChange, value }) => {
+const NumberInput = ({ onChange, onKeyDown, value }) => {
   return (
     <input
+      className='NumberInput'
       max={40}
       min={1}
       onChange={onChange}
+      onKeyDown={onKeyDown}
       type='text'
       value={value}
     />
@@ -15,6 +18,7 @@ const NumberInput = ({ onChange, value }) => {
 
 NumberInput.PropTypes = {
   onChange: PropTypes.func.isRequired,
+  onKeyDown: PropTypes.func,
   value: PropTypes.oneOf([
     PropTypes.number,
     PropTypes.string
@@ -22,6 +26,7 @@ NumberInput.PropTypes = {
 }
 
 NumberInput.defaultProps = {
+  onKeyDown: () => {},
   value: ''
 }
 

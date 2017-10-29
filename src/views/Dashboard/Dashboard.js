@@ -12,11 +12,14 @@ const Dashboard = ({ items }) => {
   return (
     <section className='Dashboard'>
       <AllNumbersChart
-        body='How many times each individual number has been picked during the history. Number 40 was introduced in 2017 and numbers 38 and 39 were introduced in 1986.'
+        body='How many times each individual number has been picked during the
+        history. Number 40 was introduced in 2017 and numbers 38 and 39 were
+        introduced in 1986.'
         items={items}
         title='Numbers All Time'
       />
       <NumberChecker
+        body='Check how many times your numbers have been picked.'
         items={items}
         title='Number Checker'
       />

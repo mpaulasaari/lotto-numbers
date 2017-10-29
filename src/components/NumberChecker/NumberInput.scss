@@ -1,0 +1,25 @@
+@import '~styles/colors';
+@import '~styles/variables';
+
+.NumberInput {
+  width: 10%;
+  max-width: 60px;
+  min-width: 40px;
+  padding: 0.4em 0.2em;
+  margin: 0 5px;
+  font-size: 2em;
+  color: $white;
+  text-align: center;
+  background-color: rgba($lightBlue, 0.35);
+  border: 0;
+  border-radius: 0.8em;
+  outline: none;
+  transition: all $transitionDuration;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: rgba($lightBlue, 0.45);
+    border-radius: 0.2em;
+  }
+}

@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Article from 'components/Article'
+import Button from 'components/Button'
 import NumberInput from './NumberInput'
 import { formatDate, formatEUR, formatMatch } from 'helpers/formatters'
 import { parsePrizes, sortByKey } from 'helpers/functions'
+import './NumberChecker.scss'
 
 const BIGGEST_WIN = { name: '', date: 0, share: 0 }
+const KEYCODES = { ENTER: 13, ESC: 27, SPACE: 32 }
 
 class NumberChecker extends Component {
   state = {
     biggestWin: null,
-    errors: '',
     inputNumbers: [],
     prizesWon: []
   }
@@ -58,48 +60,64 @@ class NumberChecker extends Component {
     if (typeof value !== 'number') value = ''
     const newNumbers = this.state.inputNumbers.slice()
     newNumbers[index] = value
-    this.validateNumbers(newNumbers)
     this.setState({
       inputNumbers: newNumbers
     })
   }
-  arrayHasDuplicates = (arr) => {
-    const sorted_arr = arr.slice().sort();
-    let hasDuplicates = false;
-    for (let i = 0; i < arr.length - 1; i++) {
-      if (sorted_arr[i + 1] && sorted_arr[i + 1] === sorted_arr[i]) {
-        hasDuplicates = true
-      }
+  onKeyDown = (e) => {
+    const keyCode = e.keyCode
+    if (keyCode === KEYCODES.ENTER || keyCode === KEYCODES.SPACE) {
+      this.onCheckNumbers()
+    } else if (keyCode === KEYCODES.ESC) {
+      this.onResetNumbers()
     }
-    return hasDuplicates
   }
-  validateNumbers = (numbers) => {
-    const errorMsg = this.arrayHasDuplicates(numbers)
-      ? 'Choose unique numbers' : ''
+  onResetNumbers = () => {
     this.setState({
-      errors: errorMsg
+      biggestWin: null,
+      inputNumbers: [],
+      prizesWon: []
     })
+  }
+  renderInputs = () => {
+    const { inputNumbers } = this.state
+    const inputs = []
+    for(let i = 0; i < 7; i++) {
+      inputs.push(
+        <NumberInput
+          key={`NumberInput-${i}`}
+          onChange={(e) => this.onInputChange(i, e)}
+          onKeyDown={(this.onKeyDown)}
+          value={inputNumbers[i] || ''}
+        />
+      )
+    }
+    return inputs
   }
   render () {
     const { body, title } = this.props
-    const { biggestWin, errors, inputNumbers, prizesWon } = this.state
+    const { biggestWin, prizesWon } = this.state
     return (
       <Article
         body={body}
         className='NumberChecker'
         title={title}
       >
-        <NumberInput onChange={(e) => this.onInputChange(0, e)} value={inputNumbers[0] || ''} />
-        <NumberInput onChange={(e) => this.onInputChange(1, e)} value={inputNumbers[1] || ''} />
-        <NumberInput onChange={(e) => this.onInputChange(2, e)} value={inputNumbers[2] || ''} />
-        <NumberInput onChange={(e) => this.onInputChange(3, e)} value={inputNumbers[3] || ''} />
-        <NumberInput onChange={(e) => this.onInputChange(4, e)} value={inputNumbers[4] || ''} />
-        <NumberInput onChange={(e) => this.onInputChange(5, e)} value={inputNumbers[5] || ''} />
-        <NumberInput onChange={(e) => this.onInputChange(6, e)} value={inputNumbers[6] || ''} />
-        <button onClick={this.onCheckNumbers} disabled={errors}>
-          Check
-        </button>
-        {errors}
+        <div className='col-1'>
+          {this.renderInputs()}
+          <Button
+            className='check'
+            onClick={this.onCheckNumbers}
+          >
+            Check
+          </Button>
+          <Button
+            className='reset'
+            onClick={this.onResetNumbers}
+          >
+            Reset
+          </Button>
+        </div>
         {biggestWin ?
           <div>
             <h3>The biggest match or win with these numbers:</h3>
