@@ -16,3 +16,8 @@ export const formatMatch = (match) => {
   if (!match) return null
   return match.replace('oikein', 'match')
 }
+
+export const formatSeconds = (time) => {
+  if (time > 1000) return `${time} s`
+  return `${time} ms`
+}

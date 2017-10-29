@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import firebase from './firebase'
 import Dashboard from 'views/Dashboard'
+import Footer from 'components/Footer'
 import Header from 'components/Header'
 
 class App extends Component {
@@ -44,6 +45,7 @@ class App extends Component {
       <main className='App'>
         <Header />
         <Dashboard items={items} />
+        <Footer items={items} />
       </main>
     )
   }

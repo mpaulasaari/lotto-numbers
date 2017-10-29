@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import Article from 'components/Article'
 import { getSortedPrizes } from 'helpers/functions'
 import { formatEUR } from 'helpers/formatters'
 import './AllPrizesChart.scss'
@@ -13,12 +14,15 @@ class AllPrizesChart extends Component {
     }
   }
   render () {
-    const { items, title } = this.props
+    const { body, items, title } = this.props
     const { options } = this.state
     const prizesSorted = getSortedPrizes(items, options)
     return (
-      <section className='AllPrizesChart section'>
-        <h2>{title}</h2>
+      <Article
+        body={body}
+        className='AllPrizesChart'
+        title={title}
+      >
         <ResponsiveContainer width='100%' height={300}>
           <LineChart data={prizesSorted}>
             <defs>
@@ -65,14 +69,19 @@ class AllPrizesChart extends Component {
             />
           </LineChart>
         </ResponsiveContainer>
-      </section>
+      </Article>
     )
   }
 }
 
 AllPrizesChart.PropTypes = {
+  body: PropTypes.string,
   items: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired
+}
+
+AllPrizesChart.defaultProps = {
+  body: ''
 }
 
 export default AllPrizesChart

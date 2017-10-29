@@ -1,0 +1,13 @@
+@import '~styles/colors';
+
+.Article {
+  padding: 25px;
+  margin-bottom: 15px;
+  background-color: rgba($darkerBlue, 0.8);
+
+  .Article-body {
+    max-width: 720px;
+    margin: 20px auto;
+    text-align: center;
+  }
+}

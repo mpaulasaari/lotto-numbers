@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-import { getNumbers } from 'helpers/functions'
+import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import Article from 'components/Article'
 import RoundedBar from './RoundedBar'
+import { getNumbers } from 'helpers/functions'
 import './AllNumbersChart.scss'
 
 class AllNumbersChart extends Component {
@@ -13,12 +14,15 @@ class AllNumbersChart extends Component {
     }
   }
   render () {
-    const { items, title } = this.props
+    const { body, items, title } = this.props
     const { options } = this.state
     const numbers = getNumbers(items, options)
     return (
-      <section className='AllNumbersChart section'>
-        <h2>{title}</h2>
+      <Article
+        body={body}
+        className='AllNumbersChart'
+        title={title}
+      >
         <ResponsiveContainer width='100%' height={300}>
           <BarChart data={numbers} barCategoryGap='15%' >
             <XAxis
@@ -49,14 +53,19 @@ class AllNumbersChart extends Component {
             />
           </BarChart>
         </ResponsiveContainer>
-      </section>
+      </Article>
     )
   }
 }
 
 AllNumbersChart.PropTypes = {
+  body: PropTypes.string,
   items: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
+}
+
+AllNumbersChart.defaultProps = {
+  body: ''
 }
 
 export default AllNumbersChart

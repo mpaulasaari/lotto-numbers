@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Article from 'components/Article'
+import NumberInput from './NumberInput'
 import { formatDate, formatEUR, formatMatch } from 'helpers/formatters'
 import { parsePrizes, sortByKey } from 'helpers/functions'
-import NumberInput from './NumberInput'
 
 const BIGGEST_WIN = { name: '', date: 0, share: 0 }
 
@@ -80,11 +81,14 @@ class NumberChecker extends Component {
     })
   }
   render () {
-    const { title } = this.props
+    const { body, title } = this.props
     const { biggestWin, errors, inputNumbers, prizesWon } = this.state
     return (
-      <section className='NumberChecker section'>
-        <h2>{title}</h2>
+      <Article
+        body={body}
+        className='NumberChecker'
+        title={title}
+      >
         <NumberInput onChange={(e) => this.onInputChange(0, e)} value={inputNumbers[0] || ''} />
         <NumberInput onChange={(e) => this.onInputChange(1, e)} value={inputNumbers[1] || ''} />
         <NumberInput onChange={(e) => this.onInputChange(2, e)} value={inputNumbers[2] || ''} />
@@ -110,13 +114,19 @@ class NumberChecker extends Component {
             })}
           </div>
         : null}
-      </section>
+      </Article>
     )
   }
 }
 
 NumberChecker.PropTypes = {
-  items: PropTypes.array.isRequired
+  body: PropTypes.string,
+  items: PropTypes.array.isRequired,
+  title: PropTypes.string.isRequired
+}
+
+NumberChecker.defaultProps = {
+  body: ''
 }
 
 export default NumberChecker

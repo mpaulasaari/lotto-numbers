@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Article from 'components/Article'
 import { getMaxInArray, getPrizes } from 'helpers/functions'
 import { formatDate, formatEUR } from 'helpers/formatters'
 
@@ -8,12 +9,11 @@ const TopTenPrizes = ({ body, items, sortDir, title }) => {
   const prizes = getPrizes(items, options)
 
   return (
-    <section className='TopTenPrizes section'>
-      <h2>{title}</h2>
-      {body
-        ? <p>{body}</p>
-        : null
-      }
+    <Article
+      body={body}
+      className='TopTenPrizes'
+      title={title}
+    >
       <ul>
         {prizes.map((item, i) => {
           const shares = item.prizes.filter(i => i.name === '7 oikein')
@@ -25,7 +25,7 @@ const TopTenPrizes = ({ body, items, sortDir, title }) => {
           )}
         )}
       </ul>
-    </section>
+    </Article>
   )
 }
 

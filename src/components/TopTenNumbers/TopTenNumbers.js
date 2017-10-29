@@ -1,17 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Article from 'components/Article'
 import { getNumbers } from 'helpers/functions'
 
 const TopTenNumbers = ({ body, items, sortDir, title }) => {
   const options = { count: 10, sortDir: sortDir, sortKey: 'count' }
   const numbers = getNumbers(items, options)
   return (
-    <section className='TopTenNumbers section'>
-      <h2>{title}</h2>
-      {body
-        ? <p>{body}</p>
-        : null
-      }
+    <Article
+      body={body}
+      className='TopTenNumbers'
+      title={title}
+    >
       <ul>
         {numbers.map((item, i) => (
           <li key={`top-ten-item-${i}`}>
@@ -19,7 +19,7 @@ const TopTenNumbers = ({ body, items, sortDir, title }) => {
           </li>
         ))}
       </ul>
-    </section>
+    </Article>
   )
 }
 
