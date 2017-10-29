@@ -6,7 +6,10 @@ const Article = ({ body, children, className, title }) => {
   let classNames = `${className} Article`
   return (
     <article className={classNames}>
-      <h2>{title}</h2>
+      {title ?
+        <h2>{title}</h2>
+        : null
+      }
       {body
         ? <p className='Article-body'>{body}</p>
         : null
@@ -20,11 +23,12 @@ Article.PropTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   body: PropTypes.string,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string
 }
 
 Article.defaultProps = {
   body: '',
+  title: ''
 }
 
 export default Article
