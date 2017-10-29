@@ -22,7 +22,7 @@ const Article = ({ body, children, className, title }) => {
 Article.PropTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  body: PropTypes.string,
+  body: PropTypes.node,
   title: PropTypes.string
 }
 

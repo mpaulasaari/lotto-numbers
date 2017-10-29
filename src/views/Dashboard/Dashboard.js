@@ -16,7 +16,7 @@ const Dashboard = ({ items }) => {
         and 2017. Number 40 was introduced in 2017 and numbers 38 and 39 were
         introduced in 1986.'
         items={items}
-        title='Numbers All Time'
+        title='All Time Numbers'
       />
       <NumberChecker
         body='Check how many times your numbers have won.'
@@ -40,7 +40,7 @@ const Dashboard = ({ items }) => {
       </div>*/}
       <AllPrizesChart
         items={items}
-        title='Individually Won Jackpots Total by Year'
+        title='Won Jackpots Total'
       />
       <div className='row'>
         <div className='col-2'>

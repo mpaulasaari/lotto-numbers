@@ -8,7 +8,7 @@ import { parsePrizes, sortByKey } from 'helpers/functions'
 import './NumberChecker.scss'
 
 const BIGGEST_WIN = { name: '', date: 0, share: 0 }
-const KEYCODES = { ENTER: 13, ESC: 27, SPACE: 32 }
+const EXAMPLE_NUMBERS = [22, 23, 24, 25, 31, 33, 36]
 const INITIALSTATE = {
   biggestWin: null,
   inputNumbers: [],
@@ -16,6 +16,7 @@ const INITIALSTATE = {
   matchingSecondaries: [],
   prizesWon: []
 }
+const KEYCODES = { ENTER: 13, ESC: 27, SPACE: 32 }
 
 class NumberChecker extends Component {
   state = {
@@ -65,6 +66,11 @@ class NumberChecker extends Component {
       biggestWin,
       prizesWon: prizesWon.sort(sortByKey('desc', 'name'))
     })
+  }
+  onExample = () => {
+    this.setState({
+      inputNumbers: EXAMPLE_NUMBERS
+    }, this.onCheckNumbers)
   }
   onInputChange = (index, e) => {
     let value = parseInt(e.target.value, 10)
@@ -119,7 +125,7 @@ class NumberChecker extends Component {
     const { biggestWin, inputNumbers, prizesWon } = this.state
     return (
       <Article
-        body={body}
+        body={<span>{body} <a onClick={this.onExample}>Example</a></span>}
         className='NumberChecker'
         title={title}
       >
@@ -139,7 +145,7 @@ class NumberChecker extends Component {
           </Button>
         </div>
         <div className='NumberChecker-results'>
-          <h3>The highest match or win:</h3>
+          <h3>Best match with these numbers</h3>
           {biggestWin && inputNumbers.length !== 0
             ? <div className='NumberChecker-BiggestWin'>
                 <div className='BiggestWin-name'>
@@ -160,7 +166,7 @@ class NumberChecker extends Component {
           }
         </div>
         <div>
-          <h4>All matches with these numbers:</h4>
+          <h4>All matches with these numbers</h4>
             {prizesWon.length && inputNumbers.length !== 0
               ? <div className='NumberChecker-AllMatches'>
                   <div className='AllMatches-grid'>

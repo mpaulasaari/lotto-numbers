@@ -12,6 +12,17 @@ body {
   linear-gradient(60deg, $darkCyan 0%, rgba($darkCyan, 0) 50%)
 }
 
+a {
+  font-weight: bold;
+  color: lighten($blue, 10%);
+  cursor: pointer;
+  transition: all $transitionDuration;
+
+  &:hover {
+    color: $white;
+  }
+}
+
 .row {
   display: grid;
   grid-template-columns: 1fr 1fr;
