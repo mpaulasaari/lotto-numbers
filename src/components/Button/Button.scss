@@ -64,4 +64,8 @@
       color: darken($white, 15%);
     }
   }
+
+  &.animate {
+    animation: $pulseAnimation;
+  }
 }

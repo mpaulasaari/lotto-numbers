@@ -14,6 +14,7 @@ const INITIAL_OPTIONS = {
 
 class AllNumbersChart extends Component {
   state = {
+    animateButton: true,
     options: INITIAL_OPTIONS
   }
   onSort = () => {
@@ -29,16 +30,20 @@ class AllNumbersChart extends Component {
         options: INITIAL_OPTIONS
       })
     }
+    this.setState({
+      animateButton: false
+    })
   }
   render () {
     const { body, items, title } = this.props
-    const { options } = this.state
+    const { animateButton, options } = this.state
     const numbers = getNumbers(items, options)
     return (
       <Article className='AllNumbersChart'>
         <h2>
           {title}
           <Button
+            className={`sort ${animateButton ? 'animate' : ''}`}
             onClick={this.onSort}
           >
             Sort

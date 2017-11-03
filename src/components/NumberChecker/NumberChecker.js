@@ -8,7 +8,6 @@ import { parsePrizes, sortByKey } from 'helpers/functions'
 import './NumberChecker.scss'
 
 const BIGGEST_WIN = { name: '', date: 0, share: 0 }
-const EXAMPLE_NUMBERS = [22, 23, 24, 25, 31, 33, 36]
 const INITIALSTATE = {
   biggestWin: null,
   inputNumbers: [],
@@ -20,6 +19,7 @@ const KEYCODES = { ENTER: 13, ESC: 27, SPACE: 32 }
 
 class NumberChecker extends Component {
   state = {
+    animateLink: true,
     ...INITIALSTATE
   }
   onCheckNumbers = () => {
@@ -68,8 +68,16 @@ class NumberChecker extends Component {
     })
   }
   onExample = () => {
+    const exampleNumbers = []
+    while (exampleNumbers.length <= 7) {
+      const random = Math.ceil(Math.random() * 37)
+      if (exampleNumbers.every(num => num !== random)) {
+        exampleNumbers.push(random)
+      }
+    }
     this.setState({
-      inputNumbers: EXAMPLE_NUMBERS
+      animateLink: false,
+      inputNumbers: exampleNumbers
     }, this.onCheckNumbers)
   }
   onInputChange = (index, e) => {
@@ -122,10 +130,19 @@ class NumberChecker extends Component {
   }
   render () {
     const { body, title } = this.props
-    const { biggestWin, inputNumbers, prizesWon } = this.state
+    const { animateLink, biggestWin, inputNumbers, prizesWon } = this.state
     return (
       <Article
-        body={<span>{body} <a onClick={this.onExample}>Example</a></span>}
+        body={
+          <span>
+            {`${body} `}
+            <a
+              className={animateLink ? 'animate' : ''}
+              onClick={this.onExample}>
+              Example
+            </a>
+          </span>
+        }
         className='NumberChecker'
         title={title}
       >

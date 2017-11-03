@@ -21,6 +21,12 @@ a {
   &:hover {
     color: $white;
   }
+
+  &.animate {
+    display: inline-block;
+    animation: $pulseAnimation;
+    transform-origin: 0 50%;
+  }
 }
 
 .row {
