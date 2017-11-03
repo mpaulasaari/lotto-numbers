@@ -13,7 +13,9 @@ const RoundedBar = (props) => {
       y={y}
       rx={w / 2}
       ry={w / 2}
-    />
+    >
+    {props.children}
+    </rect>
   )
 };
 

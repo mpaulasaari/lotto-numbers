@@ -25,10 +25,15 @@ a {
 
 .row {
   display: grid;
+  overflow: hidden;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: $articleMargin;
 
   @media (max-width: $breakMedium) {
     display: block;
+  }
+
+  .col-2 {
+    min-width: 0;
   }
 }

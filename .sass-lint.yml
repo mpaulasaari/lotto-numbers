@@ -26,7 +26,7 @@ rules:
   no-debug: 1
   no-duplicate-properties: 1
   no-ids: 2
-  no-important: 1
+  no-important: 0
   hex-notation:
     - 2
     - style: lowercase

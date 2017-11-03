@@ -45,12 +45,15 @@ const Dashboard = ({ items }) => {
       <div className='row'>
         <div className='col-2'>
           <TopTenPrizes
+            body='Biggest Jackpots won by individuals.'
             items={items}
             title='Biggest Jackpots'
           />
         </div>
         <div className='col-2'>
           <TopTenPrizes
+            body='Smallest Jackpots won by individuals.'
+            className='asc'
             items={items}
             sortDir='asc'
             title='Smallest Jackpots'
