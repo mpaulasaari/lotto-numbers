@@ -17,6 +17,10 @@ $chartFontSize: 14px;
   fill: rgba($greyBlue, 0.5);
 }
 
+.recharts-bar .recharts-label-list text {
+  fill: $white;
+}
+
 // Line Chart
 .recharts-line-curve {
   stroke-width: 3px;
