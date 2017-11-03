@@ -69,7 +69,7 @@ class NumberChecker extends Component {
   }
   onExample = () => {
     const exampleNumbers = []
-    while (exampleNumbers.length <= 7) {
+    while (exampleNumbers.length < 7) {
       const random = Math.ceil(Math.random() * 37)
       if (exampleNumbers.every(num => num !== random)) {
         exampleNumbers.push(random)
