@@ -11,10 +11,16 @@ const Footer = ({ items }) => {
   const dateRange = getDateRange(items)
   return (
     <footer className='Footer'>
-      <p>Rows in the database: {items.length}</p>
-      <p>Data size: { getJSONSize() }</p>
-      <p>Oldest entry: { formatDate(dateRange.min) }</p>
-      <p>Latest entry: { formatDate(dateRange.max) }</p>
+      <div className='Footer-grid'>
+        <div className='Footer-grid-col'>
+          <p><span className='Footer-label'>Rows in the database:</span> {items.length}</p>
+          <p><span className='Footer-label'>Data size:</span> { getJSONSize() }</p>
+        </div>
+        <div className='Footer-grid-col'>
+          <p><span className='Footer-label'>Oldest entry:</span> { formatDate(dateRange.min) }</p>
+          <p><span className='Footer-label'>Latest entry:</span> { formatDate(dateRange.max) }</p>
+        </div>
+      </div>
     </footer>
   )
 }

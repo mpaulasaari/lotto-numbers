@@ -228,10 +228,7 @@ const BiggestWin = ({ biggestWin }) => {
         }
       </div>
       <div className='BiggestWin-date'>
-        {biggestWin.date
-          ? formatDate(biggestWin.date)
-          : null
-        }
+        {formatDate(biggestWin.date)}
       </div>
     </div>
   )
