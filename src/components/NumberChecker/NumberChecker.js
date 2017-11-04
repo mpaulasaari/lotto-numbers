@@ -16,6 +16,8 @@ const INITIALSTATE = {
   prizesWon: []
 }
 const KEYCODES = { ENTER: 13, ESC: 27, SPACE: 32 }
+const NO_MATCHES = 'No matches with the selected numbers'
+const NOT_SELECTED = 'Select numbers and click CHECK'
 
 class NumberChecker extends Component {
   state = {
@@ -61,10 +63,15 @@ class NumberChecker extends Component {
         }
       })
     })
-    biggestWin = JSON.stringify(biggestWin) === JSON.stringify(BIGGEST_WIN) ? null : biggestWin
+    biggestWin = JSON.stringify(biggestWin) === JSON.stringify(BIGGEST_WIN)
+      ? NO_MATCHES
+      : biggestWin
+    prizesWon = prizesWon.length === 0
+      ? NO_MATCHES
+      : prizesWon.sort(sortByKey('desc', 'name'))
     this.setState({
       biggestWin,
-      prizesWon: prizesWon.sort(sortByKey('desc', 'name'))
+      prizesWon
     })
   }
   onExample = () => {
@@ -89,7 +96,8 @@ class NumberChecker extends Component {
     newNumbers[index] = value
     if (newNumbers.every(val => !val)) newNumbers = []
     this.setState({
-      inputNumbers: newNumbers
+      ...INITIALSTATE,
+      inputNumbers: newNumbers,
     })
   }
   onKeyDown = (e) => {
@@ -131,6 +139,7 @@ class NumberChecker extends Component {
   render () {
     const { body, title } = this.props
     const { animateLink, biggestWin, inputNumbers, prizesWon } = this.state
+    const numbersFilled = inputNumbers.length === 7 && !inputNumbers.includes(undefined)
     return (
       <Article
         body={
@@ -162,49 +171,74 @@ class NumberChecker extends Component {
           </Button>
         </div>
         <div className='NumberChecker-results'>
-          <h3>Best match with these numbers</h3>
-          {biggestWin && inputNumbers.length !== 0
-            ? <div className='NumberChecker-BiggestWin'>
-                <div className='BiggestWin-name'>
-                  {formatMatch(biggestWin.name)}
-                </div>
-                <div className='BiggestWin-share'>
-                  {formatEUR(biggestWin.share)}
-                  {biggestWin.share === 0
-                    ? <span className='noWin'>(No one won)</span>
-                    : null
-                  }
-                </div>
-                <div className='BiggestWin-date'>
-                  {formatDate(biggestWin.date)}
-                </div>
-              </div>
-            : <p>No matches with the selected numbers</p>
+          <h3>Highest match with these numbers</h3>
+          {numbersFilled && biggestWin
+            ? <BiggestWin biggestWin={biggestWin} />
+            : <p>{NOT_SELECTED}</p>
           }
         </div>
         <div>
           <h4>All matches with these numbers</h4>
-            {prizesWon.length && inputNumbers.length !== 0
-              ? <div className='NumberChecker-AllMatches'>
-                  <div className='AllMatches-grid'>
-                    {prizesWon.map((prizeWon, i) => {
-                      return ([
-                        <div className='AllMatches-name' key={`name-${i}`}>
-                          {formatMatch(prizeWon.name)}
-                        </div>,
-                        <div className='AllMatches-count' key={`count-${i}`}>
-                          {prizeWon.count} {prizeWon.count > 1 ? 'times' : 'time'}
-                        </div>
-                      ])
-                    })}
-                  </div>
-                </div>
-              : <p>No matches with the selected numbers</p>
-            }
+          {numbersFilled && prizesWon.length
+            ? <AllMatches prizesWon={prizesWon} />
+            : <p>{NOT_SELECTED}</p>
+          }
         </div>
       </Article>
     )
   }
+}
+
+const AllMatches = ({ prizesWon }) => {
+  if (typeof prizesWon === 'string') return <p>{prizesWon}</p>
+  return (
+    <div className='NumberChecker-AllMatches'>
+      <div className='AllMatches-grid'>
+        {prizesWon.map((prizeWon, i) => {
+          return ([
+            <div className='AllMatches-name' key={`name-${i}`}>
+              {formatMatch(prizeWon.name)}
+            </div>,
+            <div className='AllMatches-count' key={`count-${i}`}>
+              {prizeWon.count} {prizeWon.count > 1 ? 'times' : 'time'}
+            </div>
+          ])
+        })}
+      </div>
+    </div>
+  )
+}
+
+AllMatches.PropTypes = {
+  prizesWon: PropTypes.shape().isRequired
+}
+
+const BiggestWin = ({ biggestWin }) => {
+  if (typeof biggestWin === 'string') return <p>{biggestWin}</p>
+  return (
+    <div className='NumberChecker-BiggestWin'>
+      <div className='BiggestWin-name'>
+        {formatMatch(biggestWin.name)}
+      </div>
+      <div className='BiggestWin-share'>
+        {formatEUR(biggestWin.share)}
+        {biggestWin.share === 0
+          ? <span className='noWin'>No winners</span>
+          : null
+        }
+      </div>
+      <div className='BiggestWin-date'>
+        {biggestWin.date
+          ? formatDate(biggestWin.date)
+          : null
+        }
+      </div>
+    </div>
+  )
+}
+
+BiggestWin.PropTypes = {
+  biggestWin: PropTypes.shape().isRequired
 }
 
 NumberChecker.PropTypes = {

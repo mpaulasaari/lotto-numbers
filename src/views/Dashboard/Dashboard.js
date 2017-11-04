@@ -39,7 +39,7 @@ const Dashboard = ({ items }) => {
         </div>
       </div>*/}
       <AllPrizesChart
-        body='Annual Totals of individually won Jackpots.'
+        body='Annual Totals of individually won Jackpots (7 match).'
         items={items}
         title='Won Jackpots Total'
       />

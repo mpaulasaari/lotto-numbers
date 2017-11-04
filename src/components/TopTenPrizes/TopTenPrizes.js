@@ -18,7 +18,6 @@ const TopTenPrizes = ({ body, className, items, sortDir, title }) => {
       date: formatDate(item.date)
     }
   })
-  console.log(prizesMap)
   return (
     <Article
       body={body}
