@@ -35,18 +35,17 @@ export const getPrizes = (items = [], options = DEFAULT_PRIZES_OPTIONS) => {
   if (!items.length) return null;
   const { count, sortDir, sortKey } = options
   const getMax = (arr) => getMaxInArray(arr.prizes, 'share')
-  const onSort = sortDir === 'desc'
-    ? (a, b) =>  getMax(b) - getMax(a)
-    : sortDir === 'asc'
-    ? (a, b) => getMax(a) - getMax(b)
-    : false
+  const onSort = {
+    asc: (a, b) => getMax(a) - getMax(b),
+    desc: (a, b) => getMax(b) - getMax(a)
+  }
   const onSlice = count ? [0, count] : false
   return items
     .filter(item => getMaxInArray(
       item.prizes.filter(i => i.name === sortKey),
       'share'
     ) !== 0)
-    .sort(onSort)
+    .sort(onSort[sortDir])
     .slice(...onSlice);
 }
 

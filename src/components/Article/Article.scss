@@ -8,6 +8,10 @@ $articlePadding: 1.8em;
   margin-bottom: $articleMargin;
   background-color: rgba($darkerBlue, 0.8);
 
+  @media (max-width: $breakSmall) {
+    margin-bottom: $articleMarginSmall;
+  }
+
   .row & {
     height: calc(100% - (#{$articlePadding} * 2) - #{$articleMargin});
   }
