@@ -2,6 +2,7 @@
 @import '~styles/variables';
 
 $articlePadding: 1.8em;
+$articlePaddingSmall: 1em;
 
 .Article {
   padding: $articlePadding;
@@ -9,6 +10,8 @@ $articlePadding: 1.8em;
   background-color: rgba($darkerBlue, 0.8);
 
   @media (max-width: $breakSmall) {
+    padding-right: $articlePaddingSmall;
+    padding-left: $articlePaddingSmall;
     margin-bottom: $articleMarginSmall;
   }
 
