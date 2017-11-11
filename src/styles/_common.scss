@@ -1,8 +1,13 @@
 @import './colors.scss';
 @import './variables.scss';
 
+html {
+  height: 100%;
+}
+
 body {
-  padding-top: $headerHeight;
+  position: relative;
+  min-height: 100%;
   background-attachment: fixed;
   background-color: $black;
   background-image:

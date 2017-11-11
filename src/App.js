@@ -3,15 +3,17 @@ import firebase from './firebase'
 import Dashboard from 'views/Dashboard'
 import Footer from 'components/Footer'
 import Header from 'components/Header'
+import Loader from 'components/Loader'
 
 class App extends Component {
   state = {
     items: []
   }
   componentWillMount() {
-    const cachedNumbers = JSON.parse(localStorage.getItem('lottoNumbers'))
-    if (cachedNumbers) {
-      const dateString = cachedNumbers.timestamp
+    const cachedNumbers = localStorage.getItem('lottoNumbers')
+    const parsedNumbers = cachedNumbers && JSON.parse(cachedNumbers)
+    if (parsedNumbers) {
+      const dateString = parsedNumbers.timestamp
       const now = new Date().getTime().toString()
       const week = 7 * 24 * 60 * 60 * 1000
       if (dateString + week < now) {
@@ -20,7 +22,7 @@ class App extends Component {
       } else {
         console.log('using cached numbers')
         this.setState({
-          items: cachedNumbers.numbers,
+          items: parsedNumbers.numbers,
         })
       }
     } else {
@@ -34,18 +36,22 @@ class App extends Component {
       this.setState({
         items: snapshot.val(),
       })
-      const cachedNumbers = {timestamp: new Date().getTime(), numbers: snapshot.val()}
-      localStorage.setItem('lottoNumbers', JSON.stringify(cachedNumbers))
+      const parsedNumbers = {timestamp: new Date().getTime(), numbers: snapshot.val()}
+      localStorage.setItem('lottoNumbers', JSON.stringify(parsedNumbers))
     })
   }
   render() {
     const { items } = this.state
-    if (!items.length) return null
     return (
       <main className='App'>
         <Header />
-        <Dashboard items={items} />
-        <Footer items={items} />
+        {!items.length
+          ? <Loader />
+          : <div>
+              <Dashboard items={items} />
+              <Footer items={items} />
+            </div>
+        }
       </main>
     )
   }
