@@ -5,7 +5,8 @@ This project was part of my university studies and a final project for the cours
 real-life lottery results from the past 40+ years (*semi-big data*), store the data
 in a [Firebase](https://firebase.google.com/) database (*thus utilizing a cloud
 service*) and create a web application to display the data in a beautiful format.
-The UI is created with [React](https://reactjs.org/) and utilizes heavily
+The UI has been created with [React](https://reactjs.org/) using the excellent
+[create-react-app](https://github.com/facebook/create-react-app) and utilizes heavily
 [Recharts](http://recharts.org/en-US/) charting library.
 
 ## Live Demo
