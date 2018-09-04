@@ -1,0 +1,17 @@
+@import '~styles/colors.scss';
+
+.TopTenPrizes {
+  @for $i from 1 through 10 {
+    .recharts-bar-rectangle:nth-child(#{$i}) {
+      fill: nth($barChartColors, ($i + 8));
+    }
+  }
+
+  &.asc {
+    @for $i from 1 through 10 {
+      .recharts-bar-rectangle:nth-child(#{$i}) {
+        fill: nth($barChartColors, (42 - $i));
+      }
+    }
+  }
+}

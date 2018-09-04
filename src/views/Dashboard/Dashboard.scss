@@ -1,0 +1,15 @@
+@import '~styles/colors.scss';
+@import '~styles/variables.scss';
+
+.Dashboard {
+  width: calc(100% - 10%);
+  max-width: 1200px;
+  padding: 30px 0 20px;
+  margin: $headerHeight auto 0;
+  overflow: hidden;
+
+  @media (max-width: $breakSmall) {
+    width: calc(100%);
+    padding: 10px 0 0;
+  }
+}

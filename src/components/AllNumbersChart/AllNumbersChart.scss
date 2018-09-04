@@ -1,0 +1,16 @@
+@import '~styles/colors.scss';
+
+.AllNumbersChart {
+  @for $i from 1 through 42 {
+    .recharts-bar-rectangle:nth-child(#{$i}) {
+      fill: nth($barChartColors, $i);
+    }
+  }
+
+  .Button-sort {
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    margin-left: 30px;
+    vertical-align: middle;
+  }
+}

@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Article from 'components/Article'
 
 // How the secondary numbers count has fluctuated over the years
-const SecondaryNumbers = ({ items, title }) => {
+const SecondaryNumbers = ({ body, items, title }) => {
   const amounts = []
   items.forEach((item, i) => {
     const secondaryLength = item.secondary.length
@@ -23,8 +24,11 @@ const SecondaryNumbers = ({ items, title }) => {
   })
 
   return (
-    <div>
-      <h2>{title}</h2>
+    <Article
+      body={body}
+      className='SecondaryNumbers'
+      title={title}
+    >
       <ul>
         {amounts.map((item, i) => (
           <li key={`top-ten-item-${i}`}>
@@ -32,12 +36,18 @@ const SecondaryNumbers = ({ items, title }) => {
           </li>
         ))}
       </ul>
-    </div>
+    </Article>
   )
 }
 
 SecondaryNumbers.PropTypes = {
-  items: PropTypes.array.isRequired
+  body: PropTypes.string,
+  items: PropTypes.array.isRequired,
+  title: PropTypes.string.isRequired
+}
+
+SecondaryNumbers.defaultProps = {
+  body: ''
 }
 
 export default SecondaryNumbers

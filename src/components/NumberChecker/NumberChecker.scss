@@ -1,0 +1,62 @@
+@import '~styles/colors';
+@import '~styles/variables';
+
+.NumberChecker {
+  position: relative;
+  text-align: center;
+
+  &-buttons {
+    display: inline-block;
+
+    @media (max-width: $breakSmall) {
+      display: block;
+      margin: 1em 0;
+    }
+  }
+
+  &-results {
+    margin-top: 2em;
+  }
+
+  &-BiggestWin {
+    .BiggestWin-name {
+      color: $lightLime;
+      text-transform: uppercase;
+    }
+
+    .BiggestWin-share {
+      font-size: 2.5em;
+      font-weight: bold;
+      line-height: 1.2em;
+      color: $white;
+
+      .noWin {
+        margin-left: 10px;
+        font-size: 1rem;
+        line-height: 1rem;
+        color: $greyBlue;
+        vertical-align: middle;
+      }
+    }
+
+    .BiggestWin-date {
+      color: $greyBlue;
+    }
+  }
+
+  &-AllMatches {
+    display: inline-block;
+
+    .AllMatches-grid {
+      display: grid;
+      text-align: left;
+      white-space: nowrap;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 20px;
+    }
+
+    .AllMatches-name {
+      color: $greyBlue;
+    }
+  }
+}

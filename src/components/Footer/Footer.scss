@@ -1,0 +1,39 @@
+@import '~styles/colors.scss';
+@import '~styles/variables.scss';
+
+$titleColor: $white;
+$suffixColor: $lightBlue;
+$labelColor: $greyBlue;
+
+.Footer {
+  display: flex;
+  padding: 50px 0;
+  text-align: left;
+  background: linear-gradient($black 0%, rgba($black, 0.8) 100%);
+  align-items: center;
+  justify-content: center;
+
+  &-title {
+    margin: 0 10px;
+    color: $titleColor;
+  }
+
+  &-suffix {
+    font-size: 12px;
+    color: $suffixColor;
+  }
+
+  &-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 50px;
+
+    @media (max-width: $breakSmall) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &-label {
+    color: $labelColor;
+  }
+}

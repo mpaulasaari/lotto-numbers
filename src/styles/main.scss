@@ -1,2 +1,7 @@
-@import 'index.scss';
-@import 'App.scss';
+// base
+@import './reset';
+@import './common';
+@import './type';
+
+// vendor
+@import './charts';

@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import '~styles/colors';
+@import '~styles/variables';
+
+.Button {
+  padding: 0.6em;
+  margin: 0 5px 0 10px;
+  font-family: Lato, Arial, Helvetica;
+  font-size: 1rem;
+  color: $white;
+  text-transform: uppercase;
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: $blue;
+  border: 0;
+  border-radius: 1em;
+  outline: none;
+  transition: all $transitionDuration;
+
+  &:hover {
+    border-radius: 0.2em;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: darken($blue, 7%);
+  }
+
+  &:active {
+    background-color: darken($blue, 15%);
+  }
+
+  @media (min-width: $breakSmall) and (max-width: $breakMedium) {
+    padding: 0.4em;
+    font-size: 0.8rem;
+    border-radius: 0.8em;
+  }
+
+  &-check {
+    background-color: $lightGreen;
+
+    &:hover,
+    &:focus {
+      background-color: darken($lightGreen, 7%);
+    }
+
+    &:active {
+      background-color: darken($lightGreen, 15%);
+    }
+  }
+
+  &-reset {
+    margin-left: 0;
+    color: $lightBlue;
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+      color: $white;
+      background-color: transparent;
+    }
+
+    &:active {
+      color: darken($white, 15%);
+    }
+  }
+
+  &.animate {
+    animation: $pulseAnimation;
+  }
+}

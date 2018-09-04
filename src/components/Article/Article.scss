@@ -1,0 +1,27 @@
+@import '~styles/colors';
+@import '~styles/variables';
+
+$articlePadding: 1.8em;
+$articlePaddingSmall: 1em;
+
+.Article {
+  padding: $articlePadding;
+  margin-bottom: $articleMargin;
+  background-color: rgba($darkerBlue, 0.8);
+
+  @media (max-width: $breakSmall) {
+    padding-right: $articlePaddingSmall;
+    padding-left: $articlePaddingSmall;
+    margin-bottom: $articleMarginSmall;
+  }
+
+  .row & {
+    height: calc(100% - (#{$articlePadding} * 2) - #{$articleMargin});
+  }
+
+  .Article-body {
+    max-width: 700px;
+    margin: 1.2em auto;
+    text-align: center;
+  }
+}

@@ -90,7 +90,11 @@ module.exports = {
     // for React Native Web.
     extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx'],
     alias: {
-      
+      components: path.resolve(__dirname, '../src/components'),
+      helpers: path.resolve(__dirname, '../src/helpers'),
+      assets: path.resolve(__dirname, '../src/assets'),
+      styles: path.resolve(__dirname, '../src/styles'),
+      views: path.resolve(__dirname, '../src/views'),
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
@@ -121,7 +125,7 @@ module.exports = {
             options: {
               formatter: eslintFormatter,
               eslintPath: require.resolve('eslint'),
-              
+
             },
             loader: require.resolve('eslint-loader'),
           },
@@ -149,7 +153,7 @@ module.exports = {
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
-              
+
               compact: true,
             },
           },
@@ -196,6 +200,7 @@ module.exports = {
                               'not ie < 9', // React doesn't support IE8 anyway
                             ],
                             flexbox: 'no-2009',
+                            grid: true,
                           }),
                         ],
                       },
@@ -206,6 +211,13 @@ module.exports = {
               )
             ),
             // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
+          },
+          {
+            test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader',
+          },
+          {
+            test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
+            loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]',
           },
           // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.

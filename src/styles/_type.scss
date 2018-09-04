@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import './colors.scss';
+@import './variables.scss';
+
+$bodyColor: $lightBlue;
+
+body {
+  font-family: Lato, Arial, Helvetica;
+  font-size: 16px;
+  line-height: 1.5em;
+  color: $bodyColor;
+
+  @media (max-width: $breakMedium) {
+    font-size: 15px;
+  }
+
+  @media (max-width: $breakSmall) {
+    font-size: 14px;
+  }
+}
+
+h2 {
+  margin-bottom: 0.6em;
+  font-size: 2em;
+  line-height: 1.2em;
+  color: $white;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+h3 {
+  margin: 1em 0 0.4em;
+  font-size: 1.3em;
+  line-height: 1.2em;
+  color: $white;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+h4 {
+  margin: 1em 0 0.4em;
+  font-size: 1em;
+  line-height: 1.2em;
+  color: $white;
+  text-align: center;
+  text-transform: uppercase;
+}
