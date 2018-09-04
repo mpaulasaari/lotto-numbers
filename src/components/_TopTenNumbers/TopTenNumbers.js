@@ -1,22 +1,45 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from 'recharts'
+import {
+  Bar,
+  BarChart,
+  ResponsiveContainer,
+  XAxis,
+  YAxis
+} from 'recharts'
 import Article from 'components/Article'
 import RoundedBar from 'components/RoundedBar'
 import { getNumbers } from 'helpers/functions'
 import './TopTenNumbers.scss'
 
-const TopTenNumbers = ({ body, items, sortDir, title }) => {
-  const options = { count: 10, sortDir: sortDir, sortKey: 'count' }
+const TopTenNumbers = ({
+  body,
+  items,
+  sortDir,
+  title
+}) => {
+  const options = {
+    count: 10,
+    sortDir: sortDir,
+    sortKey: 'count'
+  }
   const numbers = getNumbers(items, options)
+
   return (
     <Article
       body={body}
       className='TopTenNumbers'
       title={title}
     >
-      <ResponsiveContainer width='100%' height={300}>
-        <BarChart data={numbers} barCategoryGap='15%' layout='vertical'>
+      <ResponsiveContainer
+        width='100%'
+        height={300}
+      >
+        <BarChart
+          data={numbers}
+          barCategoryGap='15%'
+          layout='vertical'
+        >
           <XAxis
             axisLine={false}
             dataKey='count'
@@ -44,6 +67,7 @@ const TopTenNumbers = ({ body, items, sortDir, title }) => {
           />
         </BarChart>
       </ResponsiveContainer>
+
       <ul>
         {numbers.map((item, i) => (
           <li key={`top-ten-item-${i}`}>

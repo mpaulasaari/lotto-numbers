@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import AllNumbersChart from 'components/AllNumbersChart'
 import AllPrizesChart from 'components/AllPrizesChart'
 import NumberChecker from 'components/NumberChecker'
-// import SecondaryNumbers from 'components/SecondaryNumbers'
-// import TopTenNumbers from 'components/TopTenNumbers'
 import TopTenPrizes from 'components/TopTenPrizes'
 import './Dashboard.scss'
 
@@ -23,21 +21,6 @@ const Dashboard = ({ items }) => {
         items={items}
         title='Number Checker'
       />
-      {/*<div className='row'>
-        <div className='col-2'>
-          <TopTenNumbers
-            items={items}
-            title='Most Frequent Numbers'
-          />
-        </div>
-        <div className='col-2'>
-          <TopTenNumbers
-            items={items}
-            sortDir='asc'
-            title='Least Frequent Numbers'
-          />
-        </div>
-      </div>*/}
       <AllPrizesChart
         body='Annual Totals of individually won Jackpots (7 match).'
         items={items}
@@ -61,10 +44,6 @@ const Dashboard = ({ items }) => {
           />
         </div>
       </div>
-      {/*<SecondaryNumbers
-        items={items}
-        title='Amount of Secondary Numbers'
-      />*/}
     </section>
   )
 }

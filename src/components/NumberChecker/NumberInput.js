@@ -2,7 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './NumberInput.scss'
 
-const NumberInput = ({ className, onChange, onKeyDown, value }) => {
+const NumberInput = ({
+  className,
+  onChange,
+  onKeyDown,
+  value
+}) => {
   return (
     <input
       className={`NumberInput ${className}`}

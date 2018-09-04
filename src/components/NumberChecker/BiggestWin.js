@@ -1,6 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { formatDate, formatEUR, formatMatch } from 'helpers/formatters'
+import {
+  formatDate,
+  formatEUR,
+  formatMatch
+} from 'helpers/formatters'
 import './BiggestWin.scss'
 
 const BiggestWin = ({ biggestWin }) => {
