@@ -5,6 +5,8 @@ import Button from 'components/Button'
 import NumberInput from './NumberInput'
 import { formatDate, formatEUR, formatMatch } from 'helpers/formatters'
 import { parsePrizes, sortByKey } from 'helpers/functions'
+import AllMatches from './AllMatches'
+import BiggestWin from './BiggestWin'
 import './NumberChecker.scss'
 
 const BIGGEST_WIN = { name: '', date: 0, share: 0 }
@@ -187,55 +189,6 @@ class NumberChecker extends Component {
       </Article>
     )
   }
-}
-
-const AllMatches = ({ prizesWon }) => {
-  if (typeof prizesWon === 'string') return <p>{prizesWon}</p>
-  return (
-    <div className='NumberChecker-AllMatches'>
-      <div className='AllMatches-grid'>
-        {prizesWon.map((prizeWon, i) => {
-          return ([
-            <div className='AllMatches-name' key={`name-${i}`}>
-              {formatMatch(prizeWon.name)}
-            </div>,
-            <div className='AllMatches-count' key={`count-${i}`}>
-              {prizeWon.count} {prizeWon.count > 1 ? 'times' : 'time'}
-            </div>
-          ])
-        })}
-      </div>
-    </div>
-  )
-}
-
-AllMatches.propTypes = {
-  prizesWon: PropTypes.shape().isRequired
-}
-
-const BiggestWin = ({ biggestWin }) => {
-  if (typeof biggestWin === 'string') return <p>{biggestWin}</p>
-  return (
-    <div className='NumberChecker-BiggestWin'>
-      <div className='BiggestWin-name'>
-        {formatMatch(biggestWin.name)}
-      </div>
-      <div className='BiggestWin-share'>
-        {formatEUR(biggestWin.share)}
-        {biggestWin.share === 0
-          ? <span className='noWin'>No winners</span>
-          : null
-        }
-      </div>
-      <div className='BiggestWin-date'>
-        {formatDate(biggestWin.date)}
-      </div>
-    </div>
-  )
-}
-
-BiggestWin.propTypes = {
-  biggestWin: PropTypes.shape().isRequired
 }
 
 NumberChecker.propTypes = {

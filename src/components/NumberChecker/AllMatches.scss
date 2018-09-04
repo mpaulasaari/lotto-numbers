@@ -1,0 +1,18 @@
+@import '~styles/colors';
+@import '~styles/variables';
+
+.AllMatches {
+  display: inline-block;
+
+  &-grid {
+    display: grid;
+    text-align: left;
+    white-space: nowrap;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+  }
+
+  &-name {
+    color: $greyBlue;
+  }
+}
