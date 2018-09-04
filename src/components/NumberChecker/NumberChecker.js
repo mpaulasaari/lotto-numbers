@@ -209,7 +209,7 @@ const AllMatches = ({ prizesWon }) => {
   )
 }
 
-AllMatches.PropTypes = {
+AllMatches.propTypes = {
   prizesWon: PropTypes.shape().isRequired
 }
 
@@ -234,11 +234,11 @@ const BiggestWin = ({ biggestWin }) => {
   )
 }
 
-BiggestWin.PropTypes = {
+BiggestWin.propTypes = {
   biggestWin: PropTypes.shape().isRequired
 }
 
-NumberChecker.PropTypes = {
+NumberChecker.propTypes = {
   body: PropTypes.string,
   items: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired

@@ -40,7 +40,7 @@ const SecondaryNumbers = ({ body, items, title }) => {
   )
 }
 
-SecondaryNumbers.PropTypes = {
+SecondaryNumbers.propTypes = {
   body: PropTypes.string,
   items: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired

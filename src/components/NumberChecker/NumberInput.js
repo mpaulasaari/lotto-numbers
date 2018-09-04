@@ -17,11 +17,11 @@ const NumberInput = ({ className, onChange, onKeyDown, value }) => {
   )
 }
 
-NumberInput.PropTypes = {
+NumberInput.propTypes = {
   className: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   onKeyDown: PropTypes.func,
-  value: PropTypes.oneOf([
+  value: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string
   ])

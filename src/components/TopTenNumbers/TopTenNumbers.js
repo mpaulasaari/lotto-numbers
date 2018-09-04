@@ -55,7 +55,7 @@ const TopTenNumbers = ({ body, items, sortDir, title }) => {
   )
 }
 
-TopTenNumbers.PropTypes = {
+TopTenNumbers.propTypes = {
   body: PropTypes.string,
   items: PropTypes.array.isRequired,
   sortDir: PropTypes.string,

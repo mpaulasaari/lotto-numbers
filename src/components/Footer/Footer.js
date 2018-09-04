@@ -25,7 +25,7 @@ const Footer = ({ items }) => {
   )
 }
 
-Footer.PropTypes = {
+Footer.propTypes = {
   items: PropTypes.array.isRequired
 }
 

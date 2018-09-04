@@ -72,7 +72,7 @@ const TopTenPrizes = ({ body, className, items, sortDir, title }) => {
   )
 }
 
-TopTenPrizes.PropTypes = {
+TopTenPrizes.propTypes = {
   body: PropTypes.string,
   className: PropTypes.string,
   items: PropTypes.array.isRequired,

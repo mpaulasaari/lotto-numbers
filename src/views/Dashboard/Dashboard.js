@@ -69,7 +69,7 @@ const Dashboard = ({ items }) => {
   )
 }
 
-Dashboard.PropTypes = {
+Dashboard.propTypes = {
   items: PropTypes.array.isRequired
 }
 

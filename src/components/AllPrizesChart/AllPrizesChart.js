@@ -74,7 +74,7 @@ class AllPrizesChart extends Component {
   }
 }
 
-AllPrizesChart.PropTypes = {
+AllPrizesChart.propTypes = {
   body: PropTypes.string,
   items: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired

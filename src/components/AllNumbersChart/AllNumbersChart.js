@@ -84,7 +84,7 @@ class AllNumbersChart extends Component {
   }
 }
 
-AllNumbersChart.PropTypes = {
+AllNumbersChart.propTypes = {
   body: PropTypes.string,
   items: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
