@@ -16,16 +16,19 @@ const Dashboard = ({ items }) => {
         items={items}
         title='All Time Numbers'
       />
+
       <NumberChecker
         body='Check how many times your numbers have won.'
         items={items}
         title='Number Checker'
       />
+
       <AllPrizesChart
         body='Annual Totals of individually won Jackpots (7 match).'
         items={items}
         title='Won Jackpots Total'
       />
+
       <div className='row'>
         <div className='col-2'>
           <TopTenPrizes
@@ -34,6 +37,7 @@ const Dashboard = ({ items }) => {
             title='Biggest Jackpots'
           />
         </div>
+
         <div className='col-2'>
           <TopTenPrizes
             body='Smallest Jackpots won by individuals.'

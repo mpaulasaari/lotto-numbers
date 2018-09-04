@@ -1,23 +1,47 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from 'recharts'
+import {
+  Bar,
+  BarChart,
+  ResponsiveContainer,
+  XAxis,
+  YAxis
+} from 'recharts'
 import Article from 'components/Article'
 import RoundedBar from 'components/RoundedBar'
-import { getMaxInArray, getPrizes } from 'helpers/functions'
-import { formatDate, formatEUR } from 'helpers/formatters'
+import {
+  formatDate,
+  formatEUR
+} from 'helpers/formatters'
+import {
+  getMaxInArray,
+  getPrizes
+} from 'helpers/functions'
 import './TopTenPrizes.scss'
 
-const TopTenPrizes = ({ body, className, items, sortDir, title }) => {
-  const options = { count: 10, sortDir: sortDir, sortKey: '7 oikein' }
+const TopTenPrizes = ({
+  body,
+  className,
+  items,
+  sortDir,
+  title
+}) => {
+  const options = {
+    count: 10,
+    sortDir: sortDir,
+    sortKey: '7 oikein'
+  }
   const prizes = getPrizes(items, options)
   const prizesMap = prizes.map((item, i) => {
     const shares = item.prizes.filter(i => i.name === '7 oikein')
     const share = getMaxInArray(shares, 'share')
+
     return {
       share: share,
       date: formatDate(item.date)
     }
   })
+
   return (
     <Article
       body={body}
