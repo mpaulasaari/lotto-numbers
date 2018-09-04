@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import AllNumbersChart from 'components/AllNumbersChart'
 import AllPrizesChart from 'components/AllPrizesChart'
 import NumberChecker from 'components/NumberChecker'
-// import SecondaryNumbers from 'components/SecondaryNumbers'
-// import TopTenNumbers from 'components/TopTenNumbers'
 import TopTenPrizes from 'components/TopTenPrizes'
 import './Dashboard.scss'
 
@@ -18,31 +16,19 @@ const Dashboard = ({ items }) => {
         items={items}
         title='All Time Numbers'
       />
+
       <NumberChecker
         body='Check how many times your numbers have won.'
         items={items}
         title='Number Checker'
       />
-      {/*<div className='row'>
-        <div className='col-2'>
-          <TopTenNumbers
-            items={items}
-            title='Most Frequent Numbers'
-          />
-        </div>
-        <div className='col-2'>
-          <TopTenNumbers
-            items={items}
-            sortDir='asc'
-            title='Least Frequent Numbers'
-          />
-        </div>
-      </div>*/}
+
       <AllPrizesChart
         body='Annual Totals of individually won Jackpots (7 match).'
         items={items}
         title='Won Jackpots Total'
       />
+
       <div className='row'>
         <div className='col-2'>
           <TopTenPrizes
@@ -51,6 +37,7 @@ const Dashboard = ({ items }) => {
             title='Biggest Jackpots'
           />
         </div>
+
         <div className='col-2'>
           <TopTenPrizes
             body='Smallest Jackpots won by individuals.'
@@ -61,15 +48,11 @@ const Dashboard = ({ items }) => {
           />
         </div>
       </div>
-      {/*<SecondaryNumbers
-        items={items}
-        title='Amount of Secondary Numbers'
-      />*/}
     </section>
   )
 }
 
-Dashboard.PropTypes = {
+Dashboard.propTypes = {
   items: PropTypes.array.isRequired
 }
 

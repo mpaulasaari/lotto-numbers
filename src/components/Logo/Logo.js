@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import PropTypes from 'prop-types'
 
 const Logo = ({ fill, height, width }) => (
@@ -15,13 +15,13 @@ const Logo = ({ fill, height, width }) => (
       <path d='M33.65,2,31.09,6.36,28.41,11c-.36.62-.74,1.23-1.08,1.86a1.14,1.14,0,0,1-2.05,0q-.62-1.11-1.26-2.21l-1.74-3L19.85,3.38c-.33-.57-.68-1.12-1-1.7a1.05,1.05,0,0,1,0-1.05,1.08,1.08,0,0,1,1-.63h7l6,0a1.12,1.12,0,0,1,1,1.68Z' />
     </g>
   </svg>
-);
+)
 
 Logo.propTypes = {
   fill: PropTypes.string,
   height: PropTypes.number,
   width: PropTypes.number
-};
+}
 
 Logo.defaultProps = {
   fill: '#fff',
@@ -29,4 +29,4 @@ Logo.defaultProps = {
   width: 50
 }
 
-export default Logo;
+export default Logo

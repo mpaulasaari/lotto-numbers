@@ -2,8 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const RoundedBar = (props) => {
-  const { height, vertical, width , x, y} = props
+  const {
+    height,
+    vertical,
+    width,
+    x,
+    y
+  } = props
   const w = vertical ? height : width
+
   return (
     <rect
       className='RoundedBar'
@@ -14,10 +21,10 @@ const RoundedBar = (props) => {
       rx={w / 2}
       ry={w / 2}
     >
-    {props.children}
+      {props.children}
     </rect>
   )
-};
+}
 
 RoundedBar.propTypes = {
   fill: PropTypes.string,

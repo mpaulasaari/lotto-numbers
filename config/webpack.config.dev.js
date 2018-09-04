@@ -1,4 +1,4 @@
-'use strict';
+
 
 const autoprefixer = require('autoprefixer');
 const path = require('path');
@@ -196,7 +196,21 @@ module.exports = {
             ],
           },
           {
-            test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader',
+            test: /\.scss$/,
+              use: [
+                'style-loader',
+                'css-loader',
+                'sass-loader',
+                {
+                  loader: 'sass-resources-loader',
+                  options: {
+                    resources: [
+                      path.resolve(__dirname, '../src/styles/colors.scss'),
+                      path.resolve(__dirname, '../src/styles/variables.scss')
+                    ]
+                  },
+                },
+              ],
           },
           {
             test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,

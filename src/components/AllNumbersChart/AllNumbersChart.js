@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import {
+  Bar,
+  BarChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis
+} from 'recharts'
 import Article from 'components/Article'
 import Button from 'components/Button'
 import RoundedBar from 'components/RoundedBar'
@@ -17,9 +24,11 @@ class AllNumbersChart extends Component {
     animateButton: true,
     options: INITIAL_OPTIONS
   }
+
   onSort = () => {
     const { sortKey } = this.state.options
     const options = Object.assign({}, this.state.options)
+
     if (sortKey === 'number') {
       options.sortKey = 'count'
       this.setState({
@@ -30,14 +39,24 @@ class AllNumbersChart extends Component {
         options: INITIAL_OPTIONS
       })
     }
+
     this.setState({
       animateButton: false
     })
   }
+
   render () {
-    const { body, items, title } = this.props
-    const { animateButton, options } = this.state
+    const {
+      body,
+      items,
+      title
+    } = this.props
+    const {
+      animateButton,
+      options
+    } = this.state
     const numbers = getNumbers(items, options)
+
     return (
       <Article className='AllNumbersChart'>
         <h2>
@@ -49,9 +68,17 @@ class AllNumbersChart extends Component {
             Sort
           </Button>
         </h2>
+
         <p className='Article-body'>{body}</p>
-        <ResponsiveContainer width='100%' height={300}>
-          <BarChart data={numbers} barCategoryGap='15%'>
+
+        <ResponsiveContainer
+          width='100%'
+          height={300}
+        >
+          <BarChart
+            data={numbers}
+            barCategoryGap='15%'
+          >
             <XAxis
               axisLine={false}
               color='#66829a'
@@ -84,7 +111,7 @@ class AllNumbersChart extends Component {
   }
 }
 
-AllNumbersChart.PropTypes = {
+AllNumbersChart.propTypes = {
   body: PropTypes.string,
   items: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,

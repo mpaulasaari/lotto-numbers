@@ -5,10 +5,9 @@ import { getDateRange } from 'helpers/functions'
 import './Footer.scss'
 
 const Footer = ({ items }) => {
-  const getJSONSize = () => {
-    return `${Math.round(JSON.stringify(items).length / 1024)} Kb`
-  }
+  const getJSONSize = () => `${Math.round(JSON.stringify(items).length / 1024)} Kb`
   const dateRange = getDateRange(items)
+
   return (
     <footer className='Footer'>
       <div className='Footer-grid'>
@@ -25,7 +24,7 @@ const Footer = ({ items }) => {
   )
 }
 
-Footer.PropTypes = {
+Footer.propTypes = {
   items: PropTypes.array.isRequired
 }
 

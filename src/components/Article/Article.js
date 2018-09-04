@@ -2,10 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './Article.scss'
 
-const Article = ({ body, children, className, title }) => {
-  let classNames = `${className} Article`
+const Article = ({
+  body,
+  children,
+  className,
+  title
+}) => {
   return (
-    <article className={classNames}>
+    <article className={`${className} Article`}>
       {title ?
         <h2>{title}</h2>
         : null
@@ -19,7 +23,7 @@ const Article = ({ body, children, className, title }) => {
   )
 }
 
-Article.PropTypes = {
+Article.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   body: PropTypes.node,
@@ -28,6 +32,7 @@ Article.PropTypes = {
 
 Article.defaultProps = {
   body: '',
+  className: '',
   title: ''
 }
 
