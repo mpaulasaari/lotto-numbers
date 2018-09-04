@@ -2,7 +2,7 @@
   "name": "lotto-numbers",
   "version": "1.0.0",
   "author": "mika@paulasaari.fi",
-  "private": true,
+  "license": "MIT",
   "dependencies": {
     "autoprefixer": "7.1.2",
     "babel-core": "6.25.0",

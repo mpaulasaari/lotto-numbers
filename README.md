@@ -46,6 +46,11 @@ $ yarn start
 
 - Mika Paulasaari - [github.com/mpaulasaari](https://github.com/mpaulasaari/)
 
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md)
+file for details
+
 ## Disclaimer
 
 *The project is missing some essential parts, such as tests, since all that would've
