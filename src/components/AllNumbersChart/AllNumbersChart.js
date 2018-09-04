@@ -31,6 +31,7 @@ class AllNumbersChart extends Component {
 
     if (sortKey === 'number') {
       options.sortKey = 'count'
+
       this.setState({
         options
       })

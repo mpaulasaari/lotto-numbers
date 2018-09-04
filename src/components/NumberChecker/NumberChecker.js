@@ -206,7 +206,7 @@ class NumberChecker extends Component {
         {`${body} `}
 
         <a
-          className={animateLink ? 'animate' : ''}
+          className={`NumberChecker-example ${animateLink ? 'animate' : ''}`}
           onClick={this.onExample}>
           Example
         </a>
