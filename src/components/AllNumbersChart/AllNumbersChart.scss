@@ -1,5 +1,3 @@
-@import '~styles/colors.scss';
-
 .AllNumbersChart {
   @for $i from 1 through 42 {
     .recharts-bar-rectangle:nth-child(#{$i}) {
