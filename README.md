@@ -1,8 +1,8 @@
 # Lotto Numbers
 
-This project was part of my university studies and a final project for the courses
+This project was part of my university studies and the final project for the courses
 `Big Data` and `Cloud Computing`. The idea and motivation behind it was to gather
-real-life lottery results from the past 40+ years (*semi-big data*), store the data
+real-life lottery results from the past 40+ years (*big data*), store the data
 in a [Firebase](https://firebase.google.com/) database (*thus utilizing a cloud
 service*) and create a web application to display the data in a beautiful format.
 The UI has been created with [React](https://reactjs.org/) using the excellent
@@ -17,7 +17,7 @@ development and testing purposes or check out the
 
 ### Prerequisites
 
-- Running this code depends on Node.js and Yarn. If you don't have them installed,
+- Running the code depends on Node.js and Yarn. If you don't have them installed,
 you can see how to install them here: [Node](https://nodejs.org/en/), [Yarn](https://yarnpkg.com/en/docs/install).
 
 ### Installation
