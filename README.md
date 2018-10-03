@@ -53,7 +53,7 @@ $ yarn run test
 
 ## Authors
 
-- Mika Paulasaari - [github.com/mpaulasaari](https://github.com/mpaulasaari/)
+- **Mika Paulasaari** - [mpaulasaari](https://github.com/mpaulasaari/)
 
 ## License
 
