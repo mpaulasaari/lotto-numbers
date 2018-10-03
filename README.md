@@ -42,9 +42,23 @@ $ yarn install
 $ yarn start
 ```
 
+## Running the tests
+The application uses [TestCafe](http://devexpress.github.io/testcafe/)
+to run E2E tests in headless Chrome.
+
+- Run the tests
+```bash
+$ yarn run test
+```
+
 ## Authors
 
 - Mika Paulasaari - [github.com/mpaulasaari](https://github.com/mpaulasaari/)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md)
+file for details
 
 ## Disclaimer
 

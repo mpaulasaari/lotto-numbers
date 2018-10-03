@@ -2,7 +2,7 @@
   "name": "lotto-numbers",
   "version": "1.0.0",
   "author": "mika@paulasaari.fi",
-  "private": true,
+  "license": "MIT",
   "dependencies": {
     "autoprefixer": "7.1.2",
     "babel-core": "6.25.0",
@@ -48,6 +48,7 @@
     "sass-resources-loader": "^1.3.3",
     "style-loader": "0.18.2",
     "sw-precache-webpack-plugin": "0.11.4",
+    "testcafe": "^0.22.0",
     "url-loader": "0.5.9",
     "webpack": "3.5.1",
     "webpack-dev-server": "2.8.2",
@@ -67,7 +68,7 @@
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && node scripts/build.js",
     "deploy": "npm run build-css && node scripts/build.js && firebase deploy",
-    "test": "node scripts/test.js --env=jsdom",
+    "test": "testcafe \"chrome:headless\" ./src/__tests__/*",
     "docs": "jsdoc ./src/*"
   },
   "jest": {
@@ -92,7 +93,13 @@
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
     ],
     "moduleNameMapper": {
-      "^react-native$": "react-native-web"
+      "^react-native$": "react-native-web",
+      "^root(.*)$": "<rootDir>/$1",
+      "^src(.*)$": "<rootDir>/src/$1",
+      "^helpers(.*)$": "<rootDir>/src/helpers/$1",
+      "^components(.*)$": "<rootDir>/src/components/$1",
+      "^views(.*)$": "<rootDir>/src/views/$1",
+      "^tests(.*)$": "<rootDir>/src/tests/$1"
     },
     "moduleFileExtensions": [
       "web.js",
